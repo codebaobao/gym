@@ -1,0 +1,30 @@
+<div ng-controller="dialogCtrl" id="commonDialogDiv">
+    <style>
+        .dialog_btn_div{
+            display:inline-block;
+        }
+        .dialog_btn_div button{
+            margin-right: 15px;
+        }
+    </style>
+    <div ng-repeat="dialog in dialogList">
+        <div id="{{dialog.id}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="{{dialog.id}}Label" aria-hidden="true" data-backdrop="static">
+            <div class="modal-dialog ultra-dialog">
+                <div class="modal-content">
+                    <div class="modal-header" ng-show="dialog.showTitle">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" title="{{'label.closeText' | translate}}" ng-click="closeDialog()"><span aria-hidden="true">&times;</span></button>
+                        {{dialog.title}}
+                    </div>
+                    <div class="modal-body" style="{{dialog.showTitle ? 'margin-top:30px;': ''}}">
+                        <div>{{dialog.message}}</div>
+                    </div>
+                    <div class="modal-footer clear">
+                        <div ng-repeat="item in dialog.buttonList" class="dialog_btn_div">
+                            <button type="button" class="btn {{item.class}}" data-dismiss="modal" ng-click="item.callback();closeDialog()">{{item.text}}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

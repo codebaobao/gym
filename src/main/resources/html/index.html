@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:ng="http://angularjs.org" id="ng-app" ng-app="matrixApp">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link href="resources/css/bootstrap/bootstrap.css" rel="stylesheet">
+    <link href="resources/css/bootstrap/bootstrap.cerulean.css" rel="stylesheet">
+
+    <link href="css/main.css?v=1.0.1" rel="stylesheet">
+</head>
+
+<body ng-cloak ng-controller="AppController">
+<ui-view> </ui-view>
+
+<div ng-include="'dialog/modal.html'" style="z-index: 90"></div>
+<div ng-include="'dialog/dialog.html'" style="z-index: 99"></div>
+
+<!-- javascripts -->
+<script src="resources/js/jquery-3.2.1.min.js"></script>
+<!-- bootstrap -->
+<script src="resources/js/bootstrap.min.js"></script>
+<script src="resources/js/angular/angular.min.js"></script>
+
+<script src="resources/fileupload/jquery.iframe-transport.js"></script>
+<script src="resources/fileupload/jquery.fileupload.js"></script>
+<script src="resources/eventsource/eventsource.js"></script>
+<script src="resources/js/md5.js"></script>
+
+<script src="js/matrixApp.js?v=1.0.3"></script>
+<script src="js/common.js?v=1.0.3"></script>
+<script src="js/business.js?v=1.0.2"></script>
+<script src="js/service.js?v=1.0.2"></script>
+
+<script src="dialog/dialog.js?v=1.0.0"></script>
+<script src="dialog/modal.js?v=1.0.0"></script>
+</body>
+</html>
