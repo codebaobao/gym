@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app="matrixApp">
+<head>
+    <meta charset="utf-8" />
+    <title>{{productName}}</title>
+    <link href="resources/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="resources/css/login.css" rel="stylesheet" />
+
+    <script src="resources/js/jquery-3.2.1.min.js"></script>
+    <script src="resources/js/angular/angular.min.js"></script>
+    <script src="resources/js/bootstrap.min.js"></script>
+    <script src="resources/js/md5.js"></script>
+
+    <script src="js/othersApp.js?v=1.0.3"></script>
+    <script src="js/common.js?v=1.0.3"></script>
+    <script src="js/business.js?v=1.0.2"></script>
+    <script src="js/service.js?v=1.0.2"></script>
+
+    <script src="dialog/dialog.js?v=1.0.0"></script>
+    <script src="dialog/modal.js?v=1.0.0"></script>
+</head>
+<body ng-controller="LoginController">
+<form method="post">
+    <div class="mycenter">
+        <div class="mysign">
+            <div class="col-lg-11 text-center text-info">
+                <h2>{{productName}}</h2>
+            </div>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" ng-model="loginInfo.loginId"
+                       placeholder="{{'label.inputusername'|translate}}" required autofocus ng-keydown="myKeydown($event)"/>
+            </div>
+            <div class="col-lg-10"></div>
+            <div class="col-lg-10">
+                <input type="password" class="form-control" name="loginInfo.password"
+                       placeholder="{{'label.inputpassword'|translate}}" required autofocus ng-keydown="myKeydown($event)"/>
+            </div>
+            <div class="col-lg-10"></div>
+            <!--<div class="col-lg-10 mycheckbox checkbox">-->
+                <!--<input type="checkbox" class="col-lg-1">记住密码</input>-->
+            <!--</div>-->
+            <div class="col-lg-10"></div>
+            <div class="col-lg-10">
+                <button type="button" class="btn btn-primary col-lg-12">{{"label.login" | translate}}</button>
+            </div>
+        </div>
+    </div>
+</form>
+</body>
+</html>

@@ -245,4 +245,14 @@ function validateIPv4(ipv4)
     return ipv4.match(_ipv4AddressReg);
 }
 
+function matchLan(locale)
+{
+    for(var i = 0; i < _filterLanList.length; i++)
+    {
+        if(_filterLanList[i].indexOf(locale) > -1)
+            return _filterLanList[i];
+    }
+    return _filterLanList[0];
+}
+
 
