@@ -1,0 +1,78 @@
+{
+    "menu":{
+        "home":"首页",
+        "meeting.templates": "会议模板",
+        "meeting.rooms": "会议室",
+        "meeting.meetings": "会议",
+        "meeting.meetings.ongoing": "实时会议",
+        "meeting.meetings.monitor": "会议控制",
+        "meeting.meetings.schedule": "预约会议",
+        "meeting.meetings.history": "历史会议",
+        "addressBook": "地址簿",
+        "users": "用户",
+        "admin": "管理",
+        "admin.auditLog": "操作日志",
+        "admin.logFiles": "日志文件",
+        "admin.license": "许可证信息",
+        "admin.systemStatus": "系统状态",
+        "admin.systemInfo": "系统信息",
+        "admin.upgrade": "软件升级",
+        "admin.restart": "关机 / 重启",
+        "admin.reset": "重置系统",
+        "settings.snmp": "SNMP",
+        "settings": "设置",
+        "settings.lan": "网络",
+        "settings.router": "路由",
+        "settings.gatekeeper":"网守",
+        "settings.sip":"SIP",
+        "settings.protocol":"呼叫协议",
+        "settings.qos": "QoS",
+        "settings.port": "防火墙",
+        "settings.date": "系统时间",
+        "settings.systemName": "系统名称",
+        "settings.workMode": "工作模式",
+        "settings.timeOut": "超时时间",
+        "manage":"管理",
+        "diagnoses":"诊断",
+        "diagnoses.ping":"Ping",
+        "diagnoses.traceRoute":"跟踪路由"
+    },
+    "label":{
+        "userlogin":"用户登录",
+        "pleaselogin":"请登录",
+        "inputusername":"请输入账户名",
+        "inputpassword":"请输入密码"
+    },
+    "btn":{
+        "apply": "应用",
+        "ok": "确定",
+        "save": "保存",
+        "view":"查看",
+        "add": "添加",
+        "edit": "编辑",
+        "delete": "删除",
+        "search": "查询",
+        "cancel": "取消",
+        "close": "关闭",
+        "confirm": "确定",
+        "return": "返回",
+        "refresh": "刷新",
+        "exit":"退出",
+        "login":"登录"
+    },
+    "error":{
+
+    },
+    "dialog":{
+        "info": "信息",
+        "warn": "警告",
+        "error": "错误",
+        "confirm": "确认"
+    },
+  "dropdown": {
+    "english": "英语",
+    "chinese": "简体中文",
+    "administrator": "管理员",
+    "operator": "操作员"
+  }
+}
