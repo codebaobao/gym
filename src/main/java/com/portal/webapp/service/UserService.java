@@ -2,13 +2,14 @@ package com.portal.webapp.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.portal.webapp.common.PageReq;
 import com.portal.webapp.common.Role;
 import com.portal.webapp.entity.User;
 
+@Service
 public interface UserService {
-	public User getUserByLoginId(String loginId);
-	
     /**
      * Create User
      * @param user
@@ -42,5 +43,5 @@ public interface UserService {
      */
     public void delete(String id);
 
-    User getByName(String name);
+    User getUserByName(String name);
 }

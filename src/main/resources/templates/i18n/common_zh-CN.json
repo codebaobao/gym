@@ -41,7 +41,8 @@
         "userlogin":"用户登录",
         "pleaselogin":"请登录",
         "inputusername":"请输入账户名",
-        "inputpassword":"请输入密码"
+        "inputpassword":"请输入密码",
+        "username":"用户名是必须的。"
     },
     "btn":{
         "apply": "应用",
@@ -61,7 +62,7 @@
         "login":"登录"
     },
     "error":{
-
+        "passwordError":"密码错误"
     },
     "dialog":{
         "info": "信息",

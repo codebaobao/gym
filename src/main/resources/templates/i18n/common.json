@@ -41,7 +41,8 @@
         "userlogin":"user login",
         "pleaselogin":"please login",
         "inputusername":"input username",
-        "inputpassword":"input password"
+        "inputpassword":"input password",
+        "username":"username is required."
     },
     "btn":{
         "apply": "apply",
@@ -61,7 +62,7 @@
         "login":"log in"
     },
     "error":{
-
+        "passwordError":"Password Error..."
     },
     "dialog":{
         "info": "Info",

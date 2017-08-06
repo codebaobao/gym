@@ -5,13 +5,15 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.portal.webapp.config.WebSecurityConfig;
+import com.portal.webapp.entity.User;
+import com.portal.webapp.service.UserService;
 import com.portal.webapp.utils.log.ILogger;
 import com.portal.webapp.utils.log.LogModule;
 import com.portal.webapp.utils.log.LogUtil;
@@ -20,6 +22,9 @@ import com.portal.webapp.utils.log.LogUtil;
 public class LoginController {
 	
 	private static final ILogger logger = LogUtil.getLogger(LogModule.Login, LoginController.class); 
+	
+	@Autowired
+	private UserService userService; 
 	
 	@GetMapping("/")
 	public String index() {
@@ -33,18 +38,19 @@ public class LoginController {
 
     @PostMapping("/loginPost")
     public @ResponseBody Map<String, Object> loginPost(String name, String password, HttpSession session) {
-        Map<String, Object> map = new HashMap<>();
-        if (!"123456".equals(password)) {
-            map.put("success", false);
-            map.put("message", "密码错误");
+    	User user = userService.getUserByName(name);
+    	Map<String, Object> map = new HashMap<>();
+        if (!password.equals(user.getPassword())) {
+            map.put("flag", "fail");
             return map;
         }
 
         // 设置session
         session.setAttribute(WebSecurityConfig.SESSION_KEY, name);
 
-        map.put("success", true);
-        map.put("message", "登录成功");
+        map.put("flag", "success");
+        map.put("user", user);
+        logger.info("login success!");
         return map;
     }
 

@@ -4,6 +4,7 @@ public enum Trade {
 	Body,
 	Yoga,
 	Swim,
+	Wushu,
 	Dance;
 	
 	private Trade()

@@ -22,6 +22,12 @@ public class User {
 
 	@Column(name = "password")
 	private String password;
+	
+	@Column(name = "alias")
+	private String alias;
+	
+	@Column(name = "gender")
+	private String gender;
 
 	@Column(name = "role")
 	@Enumerated(EnumType.STRING)
@@ -65,6 +71,22 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getAlias() {
+		return alias;
+	}
+
+	public void setAlias(String alias) {
+		this.alias = alias;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 
 	public Role getRole() {

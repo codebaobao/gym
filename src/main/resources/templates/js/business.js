@@ -167,7 +167,7 @@ bizModule.controller('AppController', ['$scope','$rootScope', '$translate', 'res
             $scope.languages = [];
             $scope.loginInfo={};
             $scope.currentLan = {};
-            $scope.productName = "";
+            $scope.productName = "接的快";
 
             resSrv.getLanguages().then(function(lans){
                 log("LoginController", angular.toJson(lans));
@@ -188,17 +188,15 @@ bizModule.controller('AppController', ['$scope','$rootScope', '$translate', 'res
             $scope.myKeydown = function($event){
                 var keycode = window.event?$event.keyCode:$event.which;
                 if(keycode==13){
-                    $scope.doLogin();
+                    $scope.loginPost();
                 }
             }
 
             $scope.doLogin = function()
             {
-                if(!$scope.checkUser())
-                    return;
                 $("#j_password").val(CryptoJS.MD5($scope.loginInfo.password));
                 var options = {
-                    url:  matrix_url + "/j_security_check",
+                    url:  matrix_url + "/loginPost",
                     type: 'POST',
                     success: function(responseText , status, xhr){
                         if(responseText.indexOf('Login failed') > -1)
@@ -221,26 +219,22 @@ bizModule.controller('AppController', ['$scope','$rootScope', '$translate', 'res
                 $("form").ajaxSubmit(options);
             }
 
-            $scope.checkUser = function(){
-                if($scope.loginInfo.loginId && $scope.loginInfo.loginId != '')
-                {
-                    $scope.userEmpty = false;
-                    return true;
-                }
-                else{
-                    $scope.loginFailed = false;
-                    $scope.userEmpty = true;
-                    return false;
-                }
+            $scope.loginPost = function(){
+                var user = {name:$scope.loginInfo.loginId,password:CryptoJS.MD5($scope.loginInfo.password)};
+                $scope.loginPost(user, function(data){
+                    if(data != null){
+                        if(data.flag == 'success'){
+                            saveData("userLoginInfo", angular.toJson(data.user));
+                            document.location = "index.html";
+                        }else{
+                            $scope.loginFailed = true;
+                        }
+                    }
+                });
             }
 
-            $scope.hideMessage = function()
-            {
-                $scope.loginFailed = false;
-            }
-
-            $scope.getUserByLoginId = function (loginId, callback, errorCallback) {
-                var req = {method: "GET", url: matrix_url + "/rest/users/login/" + loginId};
+            $scope.loginPost = function (user, callback, errorCallback) {
+                var req = {method: "POST", url: matrix_url + "/loginPost?name="+user.loginId+"&password="+user.password};
                 httpSrv.exec(req, callback, errorCallback);
             }
             log("LoginController", " had been initialized");
