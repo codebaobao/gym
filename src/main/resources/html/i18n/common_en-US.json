@@ -38,6 +38,7 @@
         "diagnoses.traceRoute":"Traceroute"
     },
     "label":{
+        "systemName":"Fast Connection System",
         "userlogin":"user login",
         "pleaselogin":"please login",
         "inputusername":"input username",

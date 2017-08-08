@@ -38,6 +38,7 @@
         "diagnoses.traceRoute":"跟踪路由"
     },
     "label":{
+        "systemName":"管理系统",
         "userlogin":"用户登录",
         "pleaselogin":"请登录",
         "inputusername":"请输入账户名",

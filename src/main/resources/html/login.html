@@ -2,7 +2,7 @@
 <html ng-app="matrixApp">
 <head>
     <meta charset="utf-8" />
-    <title>{{productName}}</title>
+    <title>{{"label.systemName" | translate}}</title>
     <link href="resources/css/bootstrap/bootstrap.min.css" rel="stylesheet">
     <link href="resources/css/login.css" rel="stylesheet" />
 
@@ -38,7 +38,7 @@
     <div class="mycenter">
         <div class="mysign">
             <div class="col-lg-11 text-center text-info">
-                <h2>{{productName}}</h2>
+                <h2>{{"label.systemName" | translate}}</h2>
             </div>
             <div class="col-lg-10">
                 <input type="text" class="form-control" ng-model="loginInfo.loginId" name="uername"
@@ -53,10 +53,16 @@
                        placeholder="{{'label.inputpassword'|translate}}" required autofocus ng-keydown="myKeydown($event)"/>
             </div>
             <div class="col-lg-10"></div>
+            <div class="col-lg-10">
+                <select class="form-control" ng-model="currentLan.value"  ng-change="setLanguage()">
+                    <option ng-repeat="lan in languages" ng-selected="currentLan.value == lan.value" value="{{lan.value}}">{{lan.name}}</option>
+                </select>
+            </div>
+            <div class="col-lg-10"></div>
             <!--<div class="col-lg-10 mycheckbox checkbox">-->
                 <!--<input type="checkbox" class="col-lg-1">记住密码</input>-->
             <!--</div>-->
-            <div class="col-lg-10"></div>
+            <!--<div class="col-lg-10"></div>-->
             <div class="col-lg-10">
                 <button type="button" class="btn btn-primary col-lg-12"
                         ng-disabled="myForm.uername.$dirty && myForm.uername.$invalid" ng-click="loginPost()">{{"btn.login" | translate}}</button>

@@ -29,6 +29,13 @@ body {
     margin-left: 10%;
     margin-right: 10%;
 }
+
+.mycenter select{
+    margin-top:11%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
 .mycheckbox{
     margin-top:10px;
     margin-left: 40px;

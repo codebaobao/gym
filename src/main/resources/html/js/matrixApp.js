@@ -48,7 +48,7 @@ matrixApp.config(['$stateProvider', '$urlRouterProvider',
         $locationProvider.html5Mode({enable:true, requireBase:false});
         $translateProvider.useStaticFilesLoader({
             prefix: 'i18n/common_',
-            suffix: '.json?v=1.0.3'
+            suffix: '.json'
         });
         $translateProvider.preferredLanguage('zh-CN');
         $translateProvider.useLocalStorage();
