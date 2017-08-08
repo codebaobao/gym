@@ -8,9 +8,11 @@ var currentUserId = "";
 var currentUserRole = "";
 var matrixCommon = angular.module('matrix.common', []);
 
-matrixCommon.factory("constantsSrv", function($resource, $q, $timeout, $cookieStore) {
+matrixCommon.factory("constantsSrv", ['$resource','$q', '$timeout','$cookieStore',function($resource, $q, $timeout, $cookieStore) {
+    return {
 
-})
+    };
+}])
     .filter('yesNoFilter', function() {
         return function(value) {
             if(value)

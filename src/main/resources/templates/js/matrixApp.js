@@ -45,6 +45,7 @@ matrixApp.config(['$stateProvider', '$urlRouterProvider',
     ]
 )
     .config(function($locationProvider, $translateProvider){
+        $locationProvider.html5Mode({enable:true, requireBase:false});
         $translateProvider.useStaticFilesLoader({
             prefix: 'i18n/common_',
             suffix: '.json?v=1.0.3'

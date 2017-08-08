@@ -167,7 +167,7 @@ bizModule.controller('AppController', ['$scope','$rootScope', '$translate', 'res
             $scope.languages = [];
             $scope.loginInfo={};
             $scope.currentLan = {};
-            $scope.productName = "接的快";
+            $scope.productName = "接的快管理系统";
 
             resSrv.getLanguages().then(function(lans){
                 log("LoginController", angular.toJson(lans));
@@ -192,36 +192,37 @@ bizModule.controller('AppController', ['$scope','$rootScope', '$translate', 'res
                 }
             }
 
-            $scope.doLogin = function()
-            {
-                $("#j_password").val(CryptoJS.MD5($scope.loginInfo.password));
-                var options = {
-                    url:  matrix_url + "/loginPost",
-                    type: 'POST',
-                    success: function(responseText , status, xhr){
-                        if(responseText.indexOf('Login failed') > -1)
-                        {
-                            $scope.loginFailed = true;
-                        }else{
-                            currentUserId = $scope.loginInfo.loginId;
-                            $scope.getUserByLoginId($scope.loginInfo.loginId, function(userInfo){
-                                log("LoginController", "logged in user info: " + angular.toJson(userInfo));
-                                saveData("userLoginInfo", angular.toJson(userInfo));
-                                $scope.loginFailed = false;
-                                document.location = "index.html";
-                            }, function(){
-                                $scope.loginFailed = true;
-                            })
+            //$scope.doLogin = function()
+            //{
+            //    $("#j_password").val(CryptoJS.MD5($scope.loginInfo.password));
+            //    var options = {
+            //        url:  matrix_url + "/loginPost",
+            //        type: 'POST',
+            //        success: function(responseText , status, xhr){
+            //            if(responseText.indexOf('Login failed') > -1)
+            //            {
+            //                $scope.loginFailed = true;
+            //            }else{
+            //                currentUserId = $scope.loginInfo.loginId;
+            //                $scope.getUserByLoginId($scope.loginInfo.loginId, function(userInfo){
+            //                    log("LoginController", "logged in user info: " + angular.toJson(userInfo));
+            //                    saveData("userLoginInfo", angular.toJson(userInfo));
+            //                    $scope.loginFailed = false;
+            //                    document.location = "index.html";
+            //                }, function(){
+            //                    $scope.loginFailed = true;
+            //                })
+            //
+            //            }
+            //        }
+            //    };
+            //    $("form").ajaxSubmit(options);
+            //}
 
-                        }
-                    }
-                };
-                $("form").ajaxSubmit(options);
-            }
-
+            $scope.loginFailed = false;
             $scope.loginPost = function(){
-                var user = {name:$scope.loginInfo.loginId,password:CryptoJS.MD5($scope.loginInfo.password)};
-                $scope.loginPost(user, function(data){
+                var user = {name:$scope.loginInfo.loginId, password:CryptoJS.MD5($scope.loginInfo.password)};
+                $scope.doLogin(user, function(data){
                     if(data != null){
                         if(data.flag == 'success'){
                             saveData("userLoginInfo", angular.toJson(data.user));
@@ -233,7 +234,7 @@ bizModule.controller('AppController', ['$scope','$rootScope', '$translate', 'res
                 });
             }
 
-            $scope.loginPost = function (user, callback, errorCallback) {
+            $scope.doLogin = function (user, callback, errorCallback) {
                 var req = {method: "POST", url: matrix_url + "/loginPost?name="+user.loginId+"&password="+user.password};
                 httpSrv.exec(req, callback, errorCallback);
             }
