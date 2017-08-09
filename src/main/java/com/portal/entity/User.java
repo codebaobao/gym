@@ -1,11 +1,11 @@
-package com.portal.webapp.entity;
+package com.portal.entity;
 
 import javax.persistence.*;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import com.portal.webapp.common.Role;
-import com.portal.webapp.common.Trade;
+import com.portal.common.Role;
+import com.portal.common.Trade;
 
 @Entity
 @Table(name = "t_user")

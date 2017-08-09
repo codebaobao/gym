@@ -1,4 +1,6 @@
-package com.portal.webapp.config;
+package com.portal.config;
+
+import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -33,7 +35,7 @@ public class WebSecurityConfig extends WebMvcConfigurerAdapter{
         addInterceptor.excludePathPatterns(LOGIN_URL+"**");
 
         // 拦截配置
-        addInterceptor.addPathPatterns("/**");
+//        addInterceptor.addPathPatterns("/**");
     }
 
     private class SecurityInterceptor extends HandlerInterceptorAdapter {
@@ -46,9 +48,24 @@ public class WebSecurityConfig extends WebMvcConfigurerAdapter{
                 return true;
 
             // 跳转登录
-            response.sendRedirect(LOGIN_URL);
-            return false;
+//            response.sendRedirect("login.html");
+//            gotoPage(response, "/login.html");
+            return true;
         }
+    	private void gotoPage(HttpServletResponse res, String page) throws IOException{
+    		String html = "<html><head>"
+    				+ "<meta http-equiv=\"Refresh\" content=\"0; URL=" + page
+    				+ "\">" + "</head></html>";
+
+    		res.addDateHeader("Date", new java.util.Date().getTime());
+    		res.addHeader("Content-Type", "	text/html; charset=utf-8");
+    		res.addHeader("Connection", "keep-alive");
+    		res.addHeader("Pragma", "no-cache");
+    		res.addHeader("Cache-Control", "no-cache; private; no-store");
+    		res.setStatus(HttpServletResponse.SC_OK);
+    		res.getWriter().print(html);
+    		res.flushBuffer();
+    	}
     }
 
 }

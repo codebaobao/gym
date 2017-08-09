@@ -1,12 +1,12 @@
-package com.portal.webapp.service;
+package com.portal.service;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.portal.webapp.common.PageReq;
-import com.portal.webapp.common.Role;
-import com.portal.webapp.entity.User;
+import com.portal.common.PageReq;
+import com.portal.common.Role;
+import com.portal.entity.User;
 
 @Service
 public interface UserService {

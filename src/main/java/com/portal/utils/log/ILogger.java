@@ -1,4 +1,4 @@
-package com.portal.webapp.utils.log;
+package com.portal.utils.log;
 
 public interface ILogger 
 {

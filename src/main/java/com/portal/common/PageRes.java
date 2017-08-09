@@ -1,4 +1,4 @@
-package com.portal.webapp.common;
+package com.portal.common;
 
 import java.util.List;
 

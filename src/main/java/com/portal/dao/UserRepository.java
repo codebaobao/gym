@@ -1,9 +1,9 @@
-package com.portal.webapp.dao;
+package com.portal.dao;
 
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.portal.webapp.entity.User;
+import com.portal.entity.User;
 
 @Transactional
 public interface UserRepository extends PagingAndSortingRepository<User, String>{
