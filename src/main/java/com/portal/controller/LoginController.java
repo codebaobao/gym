@@ -27,11 +27,6 @@ public class LoginController {
 	@Autowired
 	private UserService userService; 
 	
-//	@RequestMapping("/")
-//	public String index() {
-//		return "login";
-//	}
-	
     @RequestMapping("/login")
     public void login(HttpServletResponse res) throws IOException {
     	gotoPage(res, "/html/login.html");
@@ -72,9 +67,9 @@ public class LoginController {
 
 	
     @RequestMapping("/logout")
-	public String logout(HttpSession session) {
+	public void logout(HttpSession session, HttpServletResponse response) throws IOException {
         // 移除session
         session.removeAttribute(WebSecurityConfig.SESSION_KEY);
-        return "login";
+        response.sendRedirect("/login");
 	}
 }
