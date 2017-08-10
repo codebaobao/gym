@@ -28,25 +28,10 @@ public class LoginController {
 	private UserService userService; 
 	
     @RequestMapping("/login")
-    public void login(HttpServletResponse res) throws IOException {
-    	gotoPage(res, "/html/login.html");
+    public String login() throws IOException {
+    	return "login";
     }
     
-	private void gotoPage(HttpServletResponse res, String page) throws IOException{
-		String html = "<html><head>"
-				+ "<meta http-equiv=\"Refresh\" content=\"0; URL=" + page
-				+ "\">" + "</head></html>";
-
-		res.addDateHeader("Date", new java.util.Date().getTime());
-		res.addHeader("Content-Type", "	text/html; charset=utf-8");
-		res.addHeader("Connection", "keep-alive");
-		res.addHeader("Pragma", "no-cache");
-		res.addHeader("Cache-Control", "no-cache; private; no-store");
-		res.setStatus(HttpServletResponse.SC_OK);
-		res.getWriter().print(html);
-		res.flushBuffer();
-	}
-
     @RequestMapping("/loginPost")
     public @ResponseBody Map<String, Object> loginPost(String name, String password, HttpSession session) {
     	User user = userService.getUserByName(name);
