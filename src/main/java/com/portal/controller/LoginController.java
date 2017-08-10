@@ -25,7 +25,12 @@ public class LoginController {
 	private static final ILogger logger = LogUtil.getLogger(LogModule.Login, LoginController.class); 
 	
 	@Autowired
-	private UserService userService; 
+	private UserService userService;
+	
+    @RequestMapping("/")
+    public String index() throws IOException {
+    	return "index";
+    }
 	
     @RequestMapping("/login")
     public String login() throws IOException {
