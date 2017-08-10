@@ -1,5 +1,7 @@
 package com.portal.entity;
 
+import java.util.Date;
+
 import javax.persistence.*;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -9,7 +11,7 @@ import com.portal.common.Trade;
 
 @Entity
 @Table(name = "t_user")
-public class User {
+public class User implements java.io.Serializable{
 
 	@Id
 	@GeneratedValue(generator = "system-uuid")
@@ -48,6 +50,10 @@ public class User {
 	@Column(name = "trade")
 	@Enumerated(EnumType.STRING)
 	private Trade trade;
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name = "dob", length=10)
+	private Date dob;
 
 	public String getId() {
 		return id;
@@ -135,6 +141,14 @@ public class User {
 
 	public void setTrade(Trade trade) {
 		this.trade = trade;
+	}
+
+	public Date getDob() {
+		return dob;
+	}
+
+	public void setDob(Date dob) {
+		this.dob = dob;
 	}
 
 }
