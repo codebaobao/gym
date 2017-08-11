@@ -3,6 +3,7 @@ package com.portal.config.shiroconfig;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import org.apache.shiro.cache.ehcache.EhCacheManager;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
@@ -12,23 +13,23 @@ import org.slf4j.LoggerFactory;
 import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.filter.DelegatingFilterProxy;
 
-/**
- * Shiro 配置
- *
- * @author   单红宇(365384722)
- * @myblog  http://blog.csdn.net/catoop/
- * @create    2016年1月13日
- */
 @Configuration
 public class ShiroConfiguration {
 
     private static final Logger logger = LoggerFactory.getLogger(ShiroConfiguration.class);
 
+    @Bean(name = "ehCacheManager")
+    public EhCacheManager getEhCacheManager(){
+    	EhCacheManager ehCacheManager = new EhCacheManager();
+    	ehCacheManager.setCacheManagerConfigFile("classpath:ehcache-shiro.xml");
+    	return ehCacheManager;
+    }
+    
     @Bean(name = "myShiroRealm")
-    public MyShiroRealm myShiroRealm() {  
-        MyShiroRealm realm = new MyShiroRealm(); 
+    public MyShiroRealm myShiroRealm(EhCacheManager ehCacheManager) {
+        MyShiroRealm realm = new MyShiroRealm();
+        realm.setCacheManager(ehCacheManager);
         return realm;
     }  
 
@@ -73,7 +74,7 @@ public class ShiroConfiguration {
         DefaultWebSecurityManager dwsm = new DefaultWebSecurityManager();
         dwsm.setRealm(myShiroRealm);
 //      <!-- 用户授权/认证信息Cache, 采用EhCache 缓存 --> 
-//        dwsm.setCacheManager(getEhCacheManager());
+        dwsm.setCacheManager(getEhCacheManager());
         return dwsm;
     }
 
@@ -97,8 +98,9 @@ public class ShiroConfiguration {
         // anon：它对应的过滤器里面是空的,什么都没做
         logger.info("##################从数据库读取权限规则，加载到shiroFilter中##################");
 
-        filterChainDefinitionMap.put("/login", "anon");
-        filterChainDefinitionMap.put("/**", "authc");//anon 可以理解为不拦截
+        filterChainDefinitionMap.put("/login", "anon");//anon 可以理解为不拦截
+        filterChainDefinitionMap.put("/logout", "logout");
+        filterChainDefinitionMap.put("/index.html", "authc");
 
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
     }
@@ -125,6 +127,7 @@ public class ShiroConfiguration {
         shiroFilterFactoryBean.setLoginUrl("/login");
         // 登录成功后要跳转的连接
         shiroFilterFactoryBean.setSuccessUrl("/index");
+        //未授权界面
         shiroFilterFactoryBean.setUnauthorizedUrl("/403");
 
         loadShiroFilterChain(shiroFilterFactoryBean);

@@ -220,22 +220,25 @@ bizModule.controller('AppController', ['$scope','$rootScope', '$translate', 'res
             //}
 
             $scope.loginFailed = false;
+            $scope.loginFailedMessage = "";
             $scope.loginPost = function(){
-                var user = {name:$scope.loginInfo.loginId, password:CryptoJS.MD5($scope.loginInfo.password)};
-                $scope.doLogin(user, function(data){
+                var user = {username:$scope.loginInfo.loginId, password:CryptoJS.MD5($scope.loginInfo.password)};
+                $scope.doLogin(user, function(callback){
+                    var data = callback.data;
                     if(data != null){
-                        if(data.flag == 'success'){
+                        if(data.message == 'success'){
                             saveData("userLoginInfo", angular.toJson(data.user));
                             document.location = "index.html";
                         }else{
                             $scope.loginFailed = true;
+                            $scope.loginFailedMessage = data.message;
                         }
                     }
                 });
             }
 
             $scope.doLogin = function (user, callback, errorCallback) {
-                var req = {method: "POST", url: matrix_url + "/loginPost?name="+user.loginId+"&password="+user.password};
+                var req = {method: "GET", url: matrix_url + "/doLogin?username="+user.username+"&password="+user.password};
                 httpSrv.exec(req, callback, errorCallback);
             }
             log("LoginController", " had been initialized");

@@ -137,13 +137,13 @@ matrixCommon.factory("constantsSrv", ['$resource','$q', '$timeout','$cookieStore
             }
             log("httpSrv", "" + angular.toJson(config));
             $http({method: config.method, url: config.url, data: config.data, headers: {'Accept-Language': currentLocale, 'Current-User':currentUserId + "|" + currentUserRole},responseType:"application/json;charset=UTF-8"}).
-                success(function(data, status) {
+                then(function(data, status) {
                     $(".loading_icon_div").hide();
                     log("httpSrv", angular.toJson(data) + ",   " + status);
                     if(callback)
                         callback(data, status);
-                }).
-                error(function(data, status) {
+                },
+                function(data, status) {
                     $(".loading_icon_div").hide();
                     log("httpSrv", "error: " + angular.toJson(data) + ",   " + status);
                     if(status == 401 || status == 403)

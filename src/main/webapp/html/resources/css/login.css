@@ -22,14 +22,21 @@ body {
 .mycenter mysign{
     width: 440px;
 }
-.mycenter input,checkbox,button{
+.mycenter checkbox{
     margin-top:2%;
     margin-left: 10%;
     margin-right: 10%;
 }
 
-.mycenter select{
+.mycenter input, button, select{
     margin-top:11%;
+    margin-left: 10%;
+    margin-right: 10%;
+    cursor: pointer;
+}
+
+.mycenter label{
+    margin-top:2%;
     margin-left: 10%;
     margin-right: 10%;
 }

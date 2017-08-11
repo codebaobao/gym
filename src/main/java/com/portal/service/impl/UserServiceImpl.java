@@ -1,12 +1,15 @@
 package com.portal.service.impl;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.portal.common.PageReq;
-import com.portal.common.Role;
+import com.portal.common.PageResponse;
+import com.portal.common.PageResponseUtil;
 import com.portal.dao.UserRepository;
 import com.portal.entity.User;
 import com.portal.service.UserService;
@@ -21,11 +24,19 @@ public class UserServiceImpl implements UserService {
 	public void add(User user) {
 		userRepository.save(user);
 	}
+	
+	@Override
+	public void update(User user){
+		userRepository.update(user);
+	}
 
 	@Override
-	public List<User> list(PageReq pageReq, Role role) {
+	public PageResponse<User> list(PageReq pageReq, String role) {
 		// TODO Auto-generated method stub
-		return null;
+		Pageable pageable = new PageRequest(pageReq.getIndex(), pageReq.getSize(), Sort.Direction.ASC, "id");
+		Page<User> userPage = userRepository.findByRole(pageable, role);
+		return PageResponseUtil.getPageResponse(pageReq.getIndex(), pageReq.getSize(), userPage.getTotalPages(), userPage.getContent(),
+				userPage.getSize());
 	}
 
 	@Override

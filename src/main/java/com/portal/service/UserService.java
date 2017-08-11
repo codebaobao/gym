@@ -1,11 +1,9 @@
 package com.portal.service;
 
-import java.util.List;
-
 import org.springframework.stereotype.Service;
 
 import com.portal.common.PageReq;
-import com.portal.common.Role;
+import com.portal.common.PageResponse;
 import com.portal.entity.User;
 
 @Service
@@ -16,12 +14,15 @@ public interface UserService {
      * @return
      */
     public void add(User user);
+    
+    
+    public void update(User user);
 
     /**
      * 获取Users
      * @return
      */
-    public List<User> list(PageReq pageReq, Role role);
+    public PageResponse<User> list(PageReq pageReq, String role);
 
     /**
      * 按id获取User
