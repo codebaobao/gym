@@ -32,7 +32,7 @@ public class ShiroController {
 	@Autowired
 	private UserService userService;
 
-    @RequestMapping("/")
+    @RequestMapping("/index")
     public String index(){
     	return "index";
     }

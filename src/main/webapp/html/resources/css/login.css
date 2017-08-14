@@ -35,6 +35,16 @@ body {
     cursor: pointer;
 }
 
+.mycenter input{
+    margin-top:11%;
+    margin-left: 10%;
+    margin-right: 10%;
+    cursor: pointer;
+    /*border:none #FFFFFF;*/
+    /*border-bottom:#777777 solid 1px;*/
+    /*background:transparent;*/
+}
+
 .mycenter label{
     margin-top:2%;
     margin-left: 10%;

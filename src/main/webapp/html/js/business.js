@@ -7,6 +7,13 @@ var autoHideMenubars = false;
 bizModule.controller('AppController', ['$scope','$rootScope', '$translate', 'resSrv', '$timeout','$interval','$filter','$state','modalSrv','constantsSrv','dialogSrv','httpSrv',
     '$location', function($scope, $rootScope, $translate, resSrv, $timeout, $interval, $filter, $state, modalSrv, constantsSrv,dialogSrv,httpSrv ) {
 
+        var userInfo = getData("userLoginInfo");
+        if(userInfo != null){
+            $scope.loginUser = angular.fromJson(userInfo);
+        }else{
+            $scope.loginUser={"name": "ULTRA", "role": "Administrator", "id":""};
+        }
+
         $scope.goHomePage = function(){
             $rootScope.currentMenu = $rootScope.leftMenus[0];
             $state.go("home");
@@ -90,13 +97,13 @@ bizModule.controller('AppController', ['$scope','$rootScope', '$translate', 'res
                 eventSource.close();
             eventSource = null;
         }
-        $scope.startSSE();
+        //$scope.startSSE();
         $interval(function(){
             if($scope.stopInterval)
                 return;
             if(eventSource == null)
             {
-                $scope.startSSE();
+                //$scope.startSSE();
             }
             $scope.$broadcast("interval_event");
         }, 1000);
@@ -162,6 +169,14 @@ bizModule.controller('AppController', ['$scope','$rootScope', '$translate', 'res
             });
             log("LoadingController","had been initialized");
         }])
+
+    .controller('dateController', ['$scope', '$translate','resSrv','constantsSrv','httpSrv',
+        function($scope,$translate, resSrv, constantsSrv, httpSrv) {
+            $scope.productName = "管理系统";
+            $scope.serverTimeStr = "";
+
+        }])
+
     .controller('LoginController', ['$scope', '$translate','resSrv','constantsSrv','httpSrv',
         function($scope,$translate, resSrv, constantsSrv, httpSrv) {
             $scope.languages = [];

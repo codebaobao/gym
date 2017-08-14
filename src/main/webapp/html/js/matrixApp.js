@@ -11,7 +11,7 @@ var matrixApp = angular.module('matrixApp', [
     'pascalprecht.translate',
 
     'modal',
-    'common.js'
+    'dialog'
 ]);
 
 matrixApp.run([ '$rootScope', '$state', '$stateParams',

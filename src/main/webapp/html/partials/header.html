@@ -1,50 +1,15 @@
-<header class="header" ng-controller="dateController">
-    <!-- <div class="toggle-nav">
-         <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"></div>
-     </div>-->
-    <!--logo start-->
-    <div class="logo"><img src="img/logo.png"/> {{productName}}</div>
-    <!--logo end-->
-    <div class="top-nav">
-        <ul class="pull-right top-menu margin-top">
-            <select style="width:100px; height:28px;" ng-model="currentLan.value"  id="lanSelect" ng-change="setLanguage()">
-                <option ng-repeat="lan in languages" ng-selected="currentLan.value == lan.value" value="{{lan.value}}">{{lan.name}}</option>
-            </select>
-            <!-- user login dropdown start-->
-            <li class="dropdown" style="list-style: none;">
-                <a data-toggle="dropdown" class="dropdown-toggle" >
-                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                    <span class="username">{{loginUser.name}}</span>
-                    <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu extended logout">
-                    <div class="log-arrow-up"></div>
-                    <li class="eborder-top">
-                        <a ng-click="changeMyPassword()">{{"label.changePassword" | translate}}</a>
-                    </li>
-
-                    <li>
-                        <a ng-click="doLogout()">{{"label.logout" | translate}}</a>
-                    </li>
-
-                </ul>
-            </li>
-            <!-- user login dropdown end -->
-        </ul>
-        <div class="pull-right large_screen_timeInfo" style="color:#ffffff;padding-top:18px;">{{"label.serverTime" | translate}}: {{serverTimeStr}}</div>
+<div class="navbar" ng-controller="dateController">
+    <div class="row">
+        <div class="span3"></div>
+        <div class="span3"></div>
+        <div class="span2">
+            用户：{{loginUser.name}}
+        </div>
+        <div class="span3">
+            服务器时间：{{serverTimeStr}}
+        </div>
+        <div class="span1">
+            <a href="">中文</a>&nbsp;|&nbsp;<a href="">英文</a>
+        </div>
     </div>
-    <div class="small_screen_menu" style="display: none; clear: both; padding:10px;">
-        <table width="100%">
-            <tr>
-                <td align="left">
-                    <button class="btn btn-success" ng-click="showDynamicMenus($event)">{{"btn.showMenus" | translate}}</button>
-                </td>
-                <td align="right">
-                    <span style="color:#ffffff;">{{"label.serverTime" | translate}}: {{serverTimeStr}}</span>
-                </td>
-            </tr>
-        </table>
-
-    </div>
-</header>
-<!--header end-->
+</div>

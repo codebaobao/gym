@@ -1,370 +1,48 @@
 {
   "leftMenus":[
     {
-      "label": "menu.home",
-      "title": "menu.home",
-      "stateName": "home",
-      "stateUrl": "/home",
+      "label": "menu.order",
+      "title": "menu.order",
+      "stateName": "order",
+      "stateUrl": "/order",
       "viewName": "mainContentView",
-      "templateUrl": "partials/home/home.html",
+      "templateUrl": "partials/order/adminOrder.html",
       "controller": "",
       "icon": "icon-home",
-      "role": "Administrator, Operator"
-    },
-    {
-      "label": "menu.meeting.meetings",
-      "title": "menu.meeting.meetings",
-      "icon": "icon-template",
-      "stateName": "meetings",
-      "stateUrl": "/meetings",
-      "viewName": "mainContentView",
-      "templateUrl": "partials/abstractContent.html",
-      "role": "Administrator, Operator",
-      "children":[
-        {
-          "label": "menu.meeting.meetings.ongoing",
-          "title": "menu.meeting.meetings.ongoing",
-          "stateName": "ongoing",
-          "stateUrl": "/ongoing",
-          "viewName": "subContentView",
-          "templateUrl": "partials/meeting/ongoingList.html",
-          "controller": "meetingController",
-          "icon": "icon-template",
-          "role": "Administrator, Operator"
-        },
-        {
-          "label": "menu.meeting.meetings.monitor",
-          "title": "menu.meeting.meetings.monitor",
-          "stateName": "monitor",
-          "stateUrl": "/monitor",
-          "viewName": "subContentView",
-          "templateUrl": "partials/meeting/control/meetingCtrl.html",
-          "controller": "meetingCtrlController",
-          "icon": "icon-template",
-          "role": "Administrator, Operator",
-          "hidden": true
-        },
-        {
-          "label": "menu.meeting.meetings.schedule",
-          "title": "menu.meeting.meetings.schedule",
-          "stateName": "schedule",
-          "stateUrl": "/schedule",
-          "viewName": "subContentView",
-          "templateUrl": "partials/meeting/schedule/scheduleMeetingList.html",
-          "controller": "scheduleMeetingController",
-          "icon": "icon-template",
-          "role": "Administrator, Operator"
-        },{
-          "label": "menu.meeting.meetings.history",
-          "title": "menu.meeting.meetings.history",
-          "stateName": "history",
-          "stateUrl": "/history",
-          "viewName": "subContentView",
-          "templateUrl": "partials/meeting/history/historyList.html",
-          "controller": "historyMeetingController",
-          "icon": "icon-template",
-          "role": "Administrator, Operator"
-        }
-      ]
-    },
-    {
-      "label": "menu.meeting.rooms",
-      "title": "menu.meeting.rooms",
-      "stateName": "rooms",
-      "stateUrl": "/rooms",
-      "viewName": "mainContentView",
-      "templateUrl": "partials/room/roomList.html",
-      "controller": "roomsController",
-      "icon": "icon-template",
-      "role": "Administrator, Operator"
-    },
-    {
-      "label": "menu.meeting.templates",
-      "title": "menu.meeting.templates",
-      "stateName": "templates",
-      "stateUrl": "/templates",
-      "viewName": "mainContentView",
-      "templateUrl": "partials/template/templateList.html",
-      "controller": "templateController",
-      "icon": "icon-template",
       "role": "Administrator"
     },
     {
-      "label": "menu.addressBook",
-      "title": "menu.addressBook",
-      "stateName": "addressBook",
-      "stateUrl": "/addressBook",
+      "label": "menu.userOrder",
+      "title": "menu.userOrder",
+      "stateName": "userOrder",
+      "stateUrl": "/userOrder",
       "viewName": "mainContentView",
-      "templateUrl": "partials/addressbook/addressBookList.html",
-      "controller": "addressbookController",
-      "icon": "icon-template",
-      "role": "Administrator, Operator"
-    },
-    {
-      "label": "menu.users",
-      "title": "menu.users",
-      "stateName": "users",
-      "stateUrl": "/users",
-      "viewName": "mainContentView",
-      "templateUrl": "partials/user/userList.html",
-      "controller": "usersetController",
-      "icon": "icon-template",
-      "role": "Administrator"
-    },
-    {
-      "label": "menu.admin",
-      "title": "menu.admin",
-      "stateName": "admin",
-      "stateUrl": "/admin",
+      "templateUrl": "partials/order/userOrder.html",
       "controller": "",
-      "viewName": "mainContentView",
-      "templateUrl": "partials/abstractContent.html",
-      "icon": "icon-template",
-      "role": "Administrator",
-      "children":[
-        {
-          "label": "menu.admin.license",
-          "title": "menu.admin.license",
-          "stateName": "license",
-          "stateUrl": "/license",
-          "viewName": "subContentView",
-          "templateUrl": "partials/admin/licenseInfo.html",
-          "controller": "licenseController",
-          "icon": "icon-template",
-          "role": "Administrator"
-        },
-        {
-          "label": "menu.admin.systemStatus",
-          "title": "menu.admin.systemStatus",
-          "stateName": "systemStatus",
-          "stateUrl": "/systemStatus",
-          "viewName": "subContentView",
-          "templateUrl": "partials/admin/systemStatus.html",
-          "controller": "",
-          "icon": "icon-template",
-          "role": "Administrator"
-        },
-        {
-          "label": "menu.admin.auditLog",
-          "title": "menu.admin.auditLog",
-          "stateName": "audit",
-          "stateUrl": "/audit",
-          "viewName": "subContentView",
-          "templateUrl": "partials/admin/auditLog.html",
-          "controller": "auditorController",
-          "icon": "icon-template",
-          "role": "Administrator"
-        },
-        {
-          "label": "menu.admin.logFiles",
-          "title": "menu.admin.logFiles",
-          "stateName": "files",
-          "stateUrl": "/files",
-          "viewName": "subContentView",
-          "templateUrl": "partials/admin/logFiles.html",
-          "controller": "logsController",
-          "icon": "icon-template",
-          "role": "Administrator"
-        },
-        {
-          "label": "menu.admin.upgrade",
-          "title": "menu.admin.upgrade",
-          "stateName": "upgrade",
-          "stateUrl": "/upgrade",
-          "viewName": "subContentView",
-          "templateUrl": "partials/admin/upgrade.html",
-          "controller": "upgradeController",
-          "icon": "icon-template",
-          "role": "Administrator"
-        },
-        {
-          "label": "menu.admin.restart",
-          "title": "menu.admin.restart",
-          "stateName": "restart",
-          "stateUrl": "/restart",
-          "viewName": "subContentView",
-          "templateUrl": "partials/admin/restart.html",
-          "controller": "restartController",
-          "icon": "icon-template",
-          "role": "Administrator"
-        },
-        {
-          "label": "menu.admin.reset",
-          "title": "menu.admin.reset",
-          "stateName": "reset",
-          "stateUrl": "/reset",
-          "viewName": "subContentView",
-          "templateUrl": "partials/admin/reset.html",
-          "controller": "resetController",
-          "icon": "icon-template",
-          "role": "Administrator"
-        }
-      ]
+      "icon": "icon-home",
+      "role": "Organ"
     },
     {
-      "label": "menu.settings",
-      "title": "menu.settings",
-      "stateName": "settings",
-      "stateUrl": "/settings",
+      "label": "menu.verify",
+      "title": "menu.verify",
+      "stateName": "verify",
+      "stateUrl": "/verify",
       "viewName": "mainContentView",
-      "templateUrl": "partials/abstractContent.html",
-      "icon": "icon-template",
-      "role": "Administrator",
-      "children":[
-        {
-          "label": "menu.settings.lan",
-          "title": "menu.settings.lan",
-          "stateName": "lan",
-          "stateUrl": "/lan",
-          "viewName": "subContentView",
-          "templateUrl": "partials/setting/lan.html",
-          "controller": "lanController",
-          "icon": "icon-template"
-        },
-        {
-          "label": "menu.settings.router",
-          "title": "menu.settings.router",
-          "stateName": "router",
-          "stateUrl": "/router",
-          "viewName": "subContentView",
-          "templateUrl": "partials/setting/router.html",
-          "controller": "routeController",
-          "icon": "icon-template"
-        },
-        {
-          "label": "menu.settings.protocol",
-          "title": "menu.settings.protocol",
-          "stateName": "protocol",
-          "stateUrl": "/protocol",
-          "viewName": "subContentView",
-          "templateUrl": "partials/setting/protocol.html",
-          "controller": "protocolController",
-          "icon": "icon-template"
-        },
-        {
-          "label": "menu.settings.gatekeeper",
-          "title": "menu.settings.gatekeeper",
-          "stateName": "gatekeeper",
-          "stateUrl": "/gatekeeper",
-          "viewName": "subContentView",
-          "templateUrl": "partials/setting/gatekeeper.html",
-          "controller": "gkController",
-          "icon": "icon-template"
-        },
-        {
-          "label": "menu.settings.sip",
-          "title": "menu.settings.sip",
-          "stateName": "sip",
-          "stateUrl": "/sip",
-          "viewName": "subContentView",
-          "templateUrl": "partials/setting/sip.html",
-          "controller": "sipController",
-          "icon": "icon-template"
-        },
-        {
-          "label": "menu.settings.qos",
-          "title": "menu.settings.qos",
-          "stateName": "qos",
-          "stateUrl": "/qos",
-          "viewName": "subContentView",
-          "templateUrl": "partials/setting/qos.html",
-          "controller": "qosController",
-          "icon": "icon-template"
-        },
-        {
-          "label": "menu.settings.snmp",
-          "title": "menu.settings.snmp",
-          "stateName": "snmp",
-          "stateUrl": "/snmp",
-          "viewName": "subContentView",
-          "templateUrl": "partials/setting/snmp.html",
-          "controller": "SNMPController",
-          "icon": "icon-template",
-          "role": "Administrator"
-        },
-        {
-          "label": "menu.settings.port",
-          "title": "menu.settings.port",
-          "stateName": "port",
-          "stateUrl": "/port",
-          "viewName": "subContentView",
-          "templateUrl": "partials/setting/port.html",
-          "controller": "portController",
-          "icon": "icon-template"
-        },
-        {
-          "label": "menu.settings.date",
-          "title": "menu.settings.date",
-          "stateName": "date",
-          "stateUrl": "/date",
-          "viewName": "subContentView",
-          "templateUrl": "partials/setting/date.html",
-          "controller": "dateController",
-          "icon": "icon-template"
-        },
-        {
-          "label": "menu.settings.systemName",
-          "title": "menu.settings.systemName",
-          "stateName": "systemName",
-          "stateUrl": "/systemName",
-          "viewName": "subContentView",
-          "templateUrl": "partials/setting/systemName.html",
-          "controller": "systemNameController",
-          "icon": "icon-template"
-        },
-        {
-          "label": "menu.settings.workMode",
-          "title": "menu.settings.workMode",
-          "stateName": "workMode",
-          "stateUrl": "/workMode",
-          "viewName": "subContentView",
-          "templateUrl": "partials/setting/workMode.html",
-          "controller": "workModeController",
-          "icon": "icon-template"
-        },
-        {
-          "label": "menu.settings.timeOut",
-          "title": "menu.settings.timeOut",
-          "stateName": "timeOut",
-          "stateUrl": "/timeOut",
-          "viewName": "subContentView",
-          "templateUrl": "partials/setting/timeOut.html",
-          "controller": "timeOutController",
-          "icon": "icon-template"
-        }
-      ]
+      "templateUrl": "partials/verify/verify.html",
+      "controller": "",
+      "icon": "icon-home",
+      "role": "Administrator"
     },
     {
-      "label": "menu.diagnoses",
-      "title": "menu.diagnoses",
-      "stateName": "diagnoses",
-      "stateUrl": "/diagnoses",
+      "label": "menu.user",
+      "title": "menu.user",
+      "stateName": "user",
+      "stateUrl": "/user",
       "viewName": "mainContentView",
-      "templateUrl": "partials/abstractContent.html",
-      "icon": "icon-template",
-      "role": "Administrator",
-      "children":[
-        {
-          "label": "menu.diagnoses.ping",
-          "title": "menu.diagnoses.ping",
-          "stateName": "ping",
-          "stateUrl": "/ping",
-          "viewName": "subContentView",
-          "templateUrl": "partials/diagnose/ping.html",
-          "controller": "pingController",
-          "icon": "icon-template"
-        },
-        {
-          "label": "menu.diagnoses.traceRoute",
-          "title": "menu.diagnoses.traceRoute",
-          "stateName": "traceRoute",
-          "stateUrl": "/traceRoute",
-          "viewName": "subContentView",
-          "templateUrl": "partials/diagnose/traceRoute.html",
-          "controller": "traceRouteController",
-          "icon": "icon-template"
-        }
-      ]
+      "templateUrl": "partials/user/user.html",
+      "controller": "",
+      "icon": "icon-home",
+      "role": "Administrator"
     }
   ]
 }
