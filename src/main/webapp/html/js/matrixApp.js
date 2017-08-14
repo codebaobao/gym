@@ -29,13 +29,13 @@ matrixApp.config(['$stateProvider', '$urlRouterProvider',
             matrixApp.tabState.name = "tab";
             matrixApp.tabState.url = "";
             matrixApp.tabState.abstract = true;
-            matrixApp.tabState.templateUrl = "partials/main.html";
+            matrixApp.tabState.templateUrl = "/html/partials/main.html";
 
 
             $stateProvider.state(matrixApp.tabState)
                 .state("loading", {
                     url         : "/loading",
-                    templateUrl :"partials/loading.html",
+                    templateUrl :"/html/partials/loading.html",
                     controller   : "LoadingController"
                 });
 
@@ -47,7 +47,7 @@ matrixApp.config(['$stateProvider', '$urlRouterProvider',
     .config(function($locationProvider, $translateProvider){
         $locationProvider.html5Mode({enable:true, requireBase:false});
         $translateProvider.useStaticFilesLoader({
-            prefix: 'i18n/common_',
+            prefix: '/html/i18n/common_',
             suffix: '.json'
         });
         $translateProvider.preferredLanguage('zh-CN');
