@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,7 +23,7 @@ import com.portal.utils.log.LogUtil;
 @RequestMapping("users")
 public class UserController {
 	
-	private static final ILogger logger = LogUtil.getLogger(LogModule.Login, UserController.class);
+	private static final ILogger logger = LogUtil.getLogger(LogModule.User, UserController.class);
 	
 	@Autowired
 	private UserService userService;
@@ -37,12 +38,12 @@ public class UserController {
 	}
 	
 	@PostMapping
-	public void add(User user){
+	public void add(@RequestBody User user){
 		userService.add(user);
 	}
 	
 	@PutMapping
-	public void update(User user){
+	public void update(@RequestBody User user){
 		userService.update(user);
 	}
 	

@@ -6,7 +6,7 @@
         "user":"用户管理"
     },
     "label":{
-        "systemName":"管理系统",
+        "systemName":"接的快管理系统",
         "userlogin":"用户登录",
         "pleaselogin":"请登录",
         "inputusername":"请输入账户名",
@@ -23,6 +23,7 @@
         "charRange": "{{start}} 至 {{end}} 个字符",
         "closeText": "关闭",
         "changePassword":"修改密码",
+        "userPwdUpdated":"密码修改成功。",
         "systemLoading":"系统加载..."
     },
     "btn":{
@@ -43,6 +44,8 @@
         "login":"登录"
     },
     "error":{
+        "passwordNotMatched":"密码两次输入不一致",
+        "invalidValue":"密码内容错误",
         "passwordError":"密码错误"
     },
     "dialog":{

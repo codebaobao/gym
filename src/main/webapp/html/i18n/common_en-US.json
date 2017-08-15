@@ -23,6 +23,7 @@
         "charRange": "{{start}} to {{end}} characters",
         "closeText": "Close",
         "changePassword":"Change Password",
+        "userPwdUpdated":"Change Password Success.",
         "systemLoading":"System Loading..."
     },
     "btn":{
@@ -43,6 +44,8 @@
         "login":"log in"
     },
     "error":{
+        "passwordNotMatched":"The password is inconsistent twice",
+        "invalidValue":"Password content error",
         "passwordError":"Password Error..."
     },
     "dialog":{
