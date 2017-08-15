@@ -1,15 +1,10 @@
-<!--main content start-->
-<section id="main-content">
-    <section class="wrapper">
-        <div class="panel panel-default no-border ">
-            <div class="panel-heading" ng-if="currentMenu.stateName != 'home'" style="margin: 10px 0;">
-                <a ng-click="goHomePage()" class="cursor-pointer">{{"menu.home" | translate}}</a>
-                <span>  /  {{currentMenu.label | translate}}</span>
-            </div>
-            <div class="panel-body no-padding">
-                <div ui-view="mainContentView"></div>
-            </div>
-        </div>
-    </section>
-</section>
-<!--main content end-->
+<div class="panel panel-default no-border ">
+    <div class="panel-heading" ng-if="currentMenu.stateName != 'home'" style="margin-right: 10px">
+        <!--<a ng-click="goHomePage()" class="cursor-pointer">{{"menu.home" | translate}}</a>-->
+        <!--<span>  /  {{currentMenu.label | translate}}</span>-->
+        <span>{{currentMenu.label | translate}}</span>
+    </div>
+    <div class="panel-body no-padding">
+        <div ui-view="mainContentView"></div>
+    </div>
+</div>

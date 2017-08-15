@@ -99,8 +99,9 @@ public class ShiroConfiguration {
         logger.info("##################从数据库读取权限规则，加载到shiroFilter中##################");
 
         filterChainDefinitionMap.put("/login", "anon");//anon 可以理解为不拦截
-        filterChainDefinitionMap.put("/logout", "logout");
+//        filterChainDefinitionMap.put("/logout", "logout");
         filterChainDefinitionMap.put("/index.html", "authc");
+        filterChainDefinitionMap.put("/html/index.html", "authc");
 
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
     }

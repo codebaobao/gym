@@ -1,9 +1,9 @@
 {
     "menu":{
-        "menu.order":"Order Management",
-        "menu.userOrder":"Order Management",
-        "menu.verify":"Verify",
-        "menu.user":"User Management"
+        "order":"Order Management",
+        "userOrder":"Order Management",
+        "verify":"Verify",
+        "user":"User Management"
     },
     "label":{
         "systemName":"Fast Connection System",
@@ -11,7 +11,19 @@
         "pleaselogin":"please login",
         "inputusername":"input username",
         "inputpassword":"input password",
-        "username":"username is required."
+        "usernameAndPassword":"username and password is required.",
+        "chinese":"Chinese",
+        "english":"English",
+        "changePassword": "Change Password",
+        "logout": "Logout",
+        "user":"User",
+        "systemTime":"System Time",
+        "newPassword": "New Password",
+        "confirmPassword": "Confirm Password",
+        "charRange": "{{start}} to {{end}} characters",
+        "closeText": "Close",
+        "changePassword":"Change Password",
+        "systemLoading":"System Loading..."
     },
     "btn":{
         "apply": "apply",

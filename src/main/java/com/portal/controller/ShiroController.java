@@ -87,7 +87,7 @@ public class ShiroController {
     }
 
     @RequestMapping(value="/logout",method=RequestMethod.GET)  
-    public String logout(){ 
+    public String logout(){
         //使用权限管理工具进行用户的退出，跳出登录，给出提示信息
         SecurityUtils.getSubject().logout();  
         return "redirect:/login";

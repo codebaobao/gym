@@ -21,5 +21,14 @@ angular.module('matrix.bizModule')
 			updateLan: updateLan
 		}
 	}])
+	.factory('UsersSrv', ['httpSrv', function(httpSrv) {
+		var updateUser = function ( user, callback, errorCallback) {
+			var req = {method: "PUT", url: matrix_url + "/users", data:user};
+			httpSrv.exec(req, callback, errorCallback);
+		}
+		return {
+			updateUser: updateUser
+		}
+	}])
 
 ;

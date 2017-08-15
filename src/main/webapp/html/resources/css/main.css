@@ -396,9 +396,11 @@ input[disabled=true]:hover
     overflow: auto;
 }
 .modal-header{
-    background-color: #428bca;
+    background-color: #20aff0;
     color: #ffffff;
-    font-size: 16px;
+    font-size: 18px;
+    height: 55px;
+    line-height:55px;
 }
 .modal-header span{
     color: #ffffff;

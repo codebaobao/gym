@@ -1,0 +1,43 @@
+<div ng-controller="ChangeUserPasswordCtrl">
+    <div class="modal-header">
+        <div class="col-xs-6">
+            <div>{{"label.changePassword"|translate}}</div>
+        </div>
+        <div class="col-xs-5">
+        </div>
+        <div class="col-xs-1">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" title="{{'label.closeText' | translate}}" ng-click="hideModal()"><span aria-hidden="true">&times;</span></button>
+        </div>
+    </div>
+    <div class="modal-body" >
+        <form name="passwordForm" class="form-horizontal" role="form" novalidate>
+            <div class="form-group">
+                <label class="col-sm-4 control-label">{{"label.newPassword"|translate}}:</label>
+                <div class="col-sm-4">
+                    <input type="password" class="form-control" name="newPassword" ng-model="passwordInfo.newPassword" required> <!--ng-keyup="checkFieldLength(4, 20, passwordInfo.newPassword, passwordForm.newPassword)"-->
+                    <div class="valid_error" ng-show="(passwordForm.newPassword.$dirty && passwordForm.newPassword.$invalid)">
+                        <span ng-show="passwordForm.newPassword.$error">{{"error.invalidValue" | translate}}</span>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <span>({{"label.charRange" | translate: '{"start":1, "end": 20 }'}})</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-4 control-label">{{"label.confirmPassword"|translate}}:</label>
+                <div class="col-sm-4">
+                    <input type="password" class="form-control" name="confirmPassword" ng-model="passwordInfo.confirmPassword"
+                           ng-keyup="checkPassword(passwordForm)" required>
+                    <div class="valid_error" ng-show="(passwordForm.confirmPassword.$dirty && passwordForm.confirmPassword.$invalid)">
+                        <span ng-show="passwordForm.newPassword.$error">{{"error.passwordNotMatched" | translate}}</span>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer clear">
+        <button type="button" class="btn" ng-class="passwordForm.$dirty? 'btn-primary':''"
+                ng-disabled="passwordForm.$invalid|| passwordForm.newPassword.$invalid || passwordForm.confirmPassword.$invalid" ng-click="savePassword(passwordForm)">{{"btn.ok" | translate}}</button>
+        <button type="button" class="btn" data-dismiss="modal">{{"btn.cancel" | translate}}</button>
+    </div>
+</div>

@@ -1,9 +1,9 @@
 {
     "menu":{
-        "menu.order":"订单管理",
-        "menu.userOrder":"订单管理",
-        "menu.verify":"审核",
-        "menu.user":"用户管理"
+        "order":"订单管理",
+        "userOrder":"订单管理",
+        "verify":"审核",
+        "user":"用户管理"
     },
     "label":{
         "systemName":"管理系统",
@@ -11,7 +11,19 @@
         "pleaselogin":"请登录",
         "inputusername":"请输入账户名",
         "inputpassword":"请输入密码",
-        "username":"用户名是必须的。"
+        "usernameAndPassword":"用户名和密码是必须的。",
+        "chinese":"中文",
+        "english":"英文",
+        "changePassword": "修改密码",
+        "logout": "退出",
+        "user":"用户",
+        "systemTime":"系统时间",
+        "newPassword": "新密码",
+        "confirmPassword": "确认密码",
+        "charRange": "{{start}} 至 {{end}} 个字符",
+        "closeText": "关闭",
+        "changePassword":"修改密码",
+        "systemLoading":"系统加载..."
     },
     "btn":{
         "apply": "应用",

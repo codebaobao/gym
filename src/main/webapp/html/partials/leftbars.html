@@ -1,26 +1,16 @@
-<!--sidebar start-->
-<aside ng-click="$event.stopPropagation()">
-    <div id="sidebar"  class="nav-collapse ">
-        <!-- sidebar menu start-->
-        <ul class="sidebar-menu">
-            <li ng-repeat="menu in leftMenus" class="sub-menu {{$state.is(menu.stateName) ? 'active':''}}" id="{{menu.stateName}}" ng-if="menu.visible">
-                <a ng-click="updateMenu(menu)" class="cursor-pointer">
-                    <span>{{menu.label | translate}}</span>
-                    <span class="menu-arrow arrow_carrot-right" ng-show="menu.children != null"></span>
-                </a>
+ <ul class="list-group">
+     <li ng-repeat="menu in leftMenus" ng-click="updateMenu(menu)" class="list-group-item {{$state.is(menu.stateName) ? 'active':''}}" id="{{menu.stateName}}" ng-if="menu.visible" style="cursor: pointer">
+         <a>
+             <span style="font-size:15px;">{{menu.label | translate}}</span>
+             <!--<span class="badge">-></span>-->
+         </a>
 
-                <ul class="sub" ng-show="menu.children != null">
-                    <li ng-repeat="subMenu in menu.children" class="{{$state.is(subMenu.stateName) ? 'active':''}}" id ="{{subMenu.stateName}}" ng-if="subMenu.visible">
-                        <a ng-click="updateMenu(subMenu)" id ="{{subMenu.stateName}}_a" class="cursor-pointer">
-                            {{subMenu.label | translate}}
-                        </a>
-                    </li>
-                </ul>
-            </li>
-
-        </ul>
-        <!-- sidebar menu end-->
-    </div>
-</aside>
-<!--sidebar end-->
-      
+         <ul class="list-group" ng-show="menu.children != null">
+             <li ng-repeat="subMenu in menu.children" class="{{$state.is(subMenu.stateName) ? 'active':''}}" id ="{{subMenu.stateName}}" ng-if="subMenu.visible" style="cursor: pointer">
+                 <a ng-click="updateMenu(subMenu)" id ="{{subMenu.stateName}}_a">
+                     {{subMenu.label | translate}}
+                 </a>
+             </li>
+         </ul>
+     </li>
+ </ul>

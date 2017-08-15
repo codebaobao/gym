@@ -13,6 +13,8 @@ bizModule.controller('AppController', ['$scope','$rootScope', '$translate', 'res
         }else{
             $scope.loginUser={"name": "ULTRA", "role": "Administrator", "id":""};
         }
+        currentUserId = $scope.loginUser.name;
+        currentUserRole = $scope.loginUser.role;
 
         $scope.goHomePage = function(){
             $rootScope.currentMenu = $rootScope.leftMenus[0];
@@ -108,18 +110,17 @@ bizModule.controller('AppController', ['$scope','$rootScope', '$translate', 'res
             $scope.$broadcast("interval_event");
         }, 1000);
 
-        $scope.doLogout = function(isAutoCheck)
+        $scope.doLogout = function()
         {
-            var req = {method: "POST", url: matrix_url + "/logout"};
-            req.hideLoading = isAutoCheck;
+            var req = {method: "GET", url: matrix_url + "/logout"};
             httpSrv.exec(req, function(){
                 removeData("userLoginInfo");//清除用户
-                if(isAutoCheck){
-
-                }else{
-                    document.location = "index.html";
-                }
+                document.location = "index.html";
             });
+        }
+
+        $scope.changeMyPassword = function(){
+            modalSrv.showModal("/html/partials/user/changeUserPwd.html", $scope.loginUser, 1);
         }
 
         $scope.calculatePagination = function(pageData)
@@ -173,8 +174,30 @@ bizModule.controller('AppController', ['$scope','$rootScope', '$translate', 'res
     .controller('dateController', ['$scope', '$translate','resSrv','constantsSrv','httpSrv',
         function($scope,$translate, resSrv, constantsSrv, httpSrv) {
             $scope.productName = "管理系统";
-            $scope.serverTimeStr = "";
 
+            $scope.getNowFormatDate = function(){
+                var date = new Date();
+                var seperator1 = "-";
+                var seperator2 = ":";
+                var month = date.getMonth() + 1;
+                var strDate = date.getDate();
+                if (month >= 1 && month <= 9) {
+                    month = "0" + month;
+                }
+                if (strDate >= 0 && strDate <= 9) {
+                    strDate = "0" + strDate;
+                }
+                var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate
+                    + " " + date.getHours() + seperator2 + date.getMinutes()
+                    + seperator2 + date.getSeconds();
+                return currentdate;
+            }
+            $scope.serverTimeStr = $scope.getNowFormatDate();
+
+            $scope.changeLanguage = function(value){
+                $translate.use(value);
+                currentLocale = value;
+            };
         }])
 
     .controller('LoginController', ['$scope', '$translate','resSrv','constantsSrv','httpSrv',
@@ -195,6 +218,7 @@ bizModule.controller('AppController', ['$scope','$rootScope', '$translate', 'res
             $scope.currentLan.value = currentLocale;
 
             $scope.setLanguage = function(){
+                debugger;
                 log("LoginController", "change language to " + $scope.currentLan.value);
                 $translate.use($scope.currentLan.value);
                 currentLocale = $scope.currentLan.value;
@@ -206,33 +230,6 @@ bizModule.controller('AppController', ['$scope','$rootScope', '$translate', 'res
                     $scope.loginPost();
                 }
             }
-
-            //$scope.doLogin = function()
-            //{
-            //    $("#j_password").val(CryptoJS.MD5($scope.loginInfo.password));
-            //    var options = {
-            //        url:  matrix_url + "/loginPost",
-            //        type: 'POST',
-            //        success: function(responseText , status, xhr){
-            //            if(responseText.indexOf('Login failed') > -1)
-            //            {
-            //                $scope.loginFailed = true;
-            //            }else{
-            //                currentUserId = $scope.loginInfo.loginId;
-            //                $scope.getUserByLoginId($scope.loginInfo.loginId, function(userInfo){
-            //                    log("LoginController", "logged in user info: " + angular.toJson(userInfo));
-            //                    saveData("userLoginInfo", angular.toJson(userInfo));
-            //                    $scope.loginFailed = false;
-            //                    document.location = "index.html";
-            //                }, function(){
-            //                    $scope.loginFailed = true;
-            //                })
-            //
-            //            }
-            //        }
-            //    };
-            //    $("form").ajaxSubmit(options);
-            //}
 
             $scope.loginFailed = false;
             $scope.loginFailedMessage = "";
