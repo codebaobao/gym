@@ -23,7 +23,7 @@ matrixApp.run([ '$rootScope', '$state', '$stateParams',
 matrixApp.config(['$locationProvider', '$translateProvider', function ($locationProvider, $translateProvider) {
     $locationProvider.html5Mode({enable:true, requireBase:false});
     $translateProvider.useStaticFilesLoader({
-            prefix: '/html/i18n/common_',
+            prefix: '/portal/html/i18n/common_',
             suffix: '.json'
         });
     $translateProvider.preferredLanguage('zh-CN');

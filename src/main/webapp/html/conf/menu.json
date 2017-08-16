@@ -6,7 +6,7 @@
       "stateName": "order",
       "stateUrl": "/order",
       "viewName": "mainContentView",
-      "templateUrl": "/html/partials/order/adminOrder.html",
+      "templateUrl": "/portal/html/partials/order/adminOrder.html",
       "controller": "",
       "icon": "icon-home",
       "role": "Administrator"
@@ -17,7 +17,7 @@
       "stateName": "userOrder",
       "stateUrl": "/userOrder",
       "viewName": "mainContentView",
-      "templateUrl": "/html/partials/order/userOrder.html",
+      "templateUrl": "/portal/html/partials/order/userOrder.html",
       "controller": "",
       "icon": "icon-home",
       "role": "Organ"
@@ -28,7 +28,7 @@
       "stateName": "verify",
       "stateUrl": "/verify",
       "viewName": "mainContentView",
-      "templateUrl": "/html/partials/verify/verify.html",
+      "templateUrl": "/portal/html/partials/verify/verify.html",
       "controller": "",
       "icon": "icon-home",
       "role": "Administrator"
@@ -39,7 +39,7 @@
       "stateName": "user",
       "stateUrl": "/user",
       "viewName": "mainContentView",
-      "templateUrl": "/html/partials/user/user.html",
+      "templateUrl": "/portal/html/partials/user/user.html",
       "controller": "",
       "icon": "icon-home",
       "role": "Administrator"

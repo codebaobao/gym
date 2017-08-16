@@ -1,7 +1,10 @@
 package com.portal.controller;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -49,7 +52,7 @@ public class ShiroController {
     	String message = "success";
         UsernamePasswordToken token = new UsernamePasswordToken(username, password);
         //获取当前的Subject  
-        Subject currentUser = SecurityUtils.getSubject();  
+        Subject currentUser = SecurityUtils.getSubject();
         try {
             //在调用了login方法后,SecurityManager会收到AuthenticationToken,并将其发送给已配置的Realm执行必须的认证检查  
             //每个Realm都能在必要时对提交的AuthenticationTokens作出反应  
@@ -87,10 +90,10 @@ public class ShiroController {
     }
 
     @RequestMapping(value="/logout",method=RequestMethod.GET)  
-    public String logout(){
+    public void logout(HttpServletResponse response) throws IOException{
         //使用权限管理工具进行用户的退出，跳出登录，给出提示信息
-        SecurityUtils.getSubject().logout();  
-        return "redirect:/login";
+        SecurityUtils.getSubject().logout();
+        response.sendRedirect("/portal/login");
     } 
 
     @RequestMapping("/403")

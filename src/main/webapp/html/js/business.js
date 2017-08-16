@@ -120,7 +120,7 @@ bizModule.controller('AppController', ['$scope','$rootScope', '$translate', 'res
         }
 
         $scope.changeMyPassword = function(){
-            modalSrv.showModal("/html/partials/user/changeUserPwd.html", $scope.loginUser, 1);
+            modalSrv.showModal("/portal/html/partials/user/changeUserPwd.html", $scope.loginUser, 1);
         }
 
         $scope.calculatePagination = function(pageData)

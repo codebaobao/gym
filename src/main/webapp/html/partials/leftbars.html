@@ -5,12 +5,12 @@
              <!--<span class="badge">-></span>-->
          </a>
 
-         <ul class="list-group" ng-show="menu.children != null">
-             <li ng-repeat="subMenu in menu.children" class="{{$state.is(subMenu.stateName) ? 'active':''}}" id ="{{subMenu.stateName}}" ng-if="subMenu.visible" style="cursor: pointer">
-                 <a ng-click="updateMenu(subMenu)" id ="{{subMenu.stateName}}_a">
-                     {{subMenu.label | translate}}
-                 </a>
-             </li>
-         </ul>
+         <!--<ul class="list-group" ng-show="menu.children != null">-->
+             <!--<li ng-repeat="subMenu in menu.children" class="{{$state.is(subMenu.stateName) ? 'active':''}}" id ="{{subMenu.stateName}}" ng-if="subMenu.visible" style="cursor: pointer">-->
+                 <!--<a ng-click="updateMenu(subMenu)" id ="{{subMenu.stateName}}_a">-->
+                     <!--{{subMenu.label | translate}}-->
+                 <!--</a>-->
+             <!--</li>-->
+         <!--</ul>-->
      </li>
  </ul>

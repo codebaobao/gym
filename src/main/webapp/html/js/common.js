@@ -25,11 +25,11 @@ matrixCommon.factory("constantsSrv", ['$resource','$q', '$timeout','$cookieStore
     })
 
     .factory("resSrv", ['$resource', "$q", "$timeout", function($resource, $q, $timeout) {
-    var menuRes = $resource('/html/conf/menu.json', {}, {
+    var menuRes = $resource('/portal/html/conf/menu.json', {}, {
         load: {method:'GET', params:{}, isArray:false}
     });
 
-    var lanRes = $resource('/html/conf/language.json', {}, {
+    var lanRes = $resource('/portal/html/conf/language.json', {}, {
         load: {method:'GET', params:{}, isArray:true}
     });
 
