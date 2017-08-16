@@ -1,23 +1,19 @@
 <div class="row" style="height:50px;background-color: #20aff0; color: #ffffff; line-height:50px;" ng-controller="dateController">
-    <div class="col-xs-3" style="font-size:20px;font-family:SimHei">
-        <div class="col-xs-1"></div>
-        <div class="col-xs-10">{{"label.systemName" | translate}}</div>
+    <div class="col-lg-3" style="font-size:20px;font-family:SimHei">
+        {{"label.systemName" | translate}}
     </div>
-    <div class="col-xs-1"></div>
-    <div class="col-xs-2">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-1">
         {{"label.user" | translate}}：{{loginUser.name}}
     </div>
-    <div class="col-xs-2">
+    <div class="col-lg-2">
         {{"label.systemTime" | translate}}：{{serverTimeStr}}
     </div>
-    <div class="col-xs-2">
-        <div class="col-xs-4"></div>
-        <div class="col-xs-8">
-            <a href="" style="color:snow" ng-click="changeLanguage('zh-CN')">{{"label.chinese" | translate}}</a>&nbsp;|&nbsp;
-            <a href="" style="color:snow" ng-click="changeLanguage('en-US')">{{"label.english" | translate}}</a>
-        </div>
+    <div class="col-lg-2">
+        <a href="" style="color:snow" ng-click="changeLanguage('zh-CN')">{{"label.chinese" | translate}}</a>&nbsp;|&nbsp;
+        <a href="" style="color:snow" ng-click="changeLanguage('en-US')">{{"label.english" | translate}}</a>
     </div>
-    <div class="col-xs-2">
+    <div class="col-lg-2">
         <a href="" style="color:snow" ng-click="changeMyPassword()">{{"label.changePassword" | translate}}</a>&nbsp;|&nbsp;
         <a href="" style="color:snow" ng-click="doLogout()">{{"label.logout" | translate}}</a>
     </div>

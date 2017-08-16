@@ -115,7 +115,7 @@ bizModule.controller('AppController', ['$scope','$rootScope', '$translate', 'res
             var req = {method: "GET", url: matrix_url + "/logout"};
             httpSrv.exec(req, function(){
                 removeData("userLoginInfo");//清除用户
-                document.location = "index.html";
+                document.location = "login.html";
             });
         }
 
