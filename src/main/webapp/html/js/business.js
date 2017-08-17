@@ -22,34 +22,34 @@ bizModule.controller('AppController', ['$scope','$rootScope', '$translate', 'res
         }
         $scope.updateMenu = function(menu)
         {
-            if(angular.isDefined(menu.children)){
-                var last = $('.sub-menu.open', $('#sidebar'));
-                $('.menu-arrow').removeClass('arrow_carrot-right');
-                $('.sub', last).slideUp(200);
-                var sub = $("#" + menu.stateName + " a").next();
-                if (sub.is(":visible")) {
-                    $('.menu-arrow').addClass('arrow_carrot-right');
-                    sub.slideUp(200);
-                } else {
-                    $('.menu-arrow').addClass('arrow_carrot-down');
-                    sub.slideDown(200);
-                }
-                var o = ($("#" + menu.stateName + " a").offset());
-                var diff = 200 - o.top;
-                if(diff>0)
-                    $("#sidebar").scrollTo("-="+Math.abs(diff),500);
-                else
-                    $("#sidebar").scrollTo("+="+Math.abs(diff),500);
-                return;
-            }
+            //if(angular.isDefined(menu.children)){
+            //    var last = $('.sub-menu.open', $('#sidebar'));
+            //    $('.menu-arrow').removeClass('arrow_carrot-right');
+            //    $('.sub', last).slideUp(200);
+            //    var sub = $("#" + menu.stateName + " a").next();
+            //    if (sub.is(":visible")) {
+            //        $('.menu-arrow').addClass('arrow_carrot-right');
+            //        sub.slideUp(200);
+            //    } else {
+            //        $('.menu-arrow').addClass('arrow_carrot-down');
+            //        sub.slideDown(200);
+            //    }
+            //    var o = ($("#" + menu.stateName + " a").offset());
+            //    var diff = 200 - o.top;
+            //    if(diff>0)
+            //        $("#sidebar").scrollTo("-="+Math.abs(diff),500);
+            //    else
+            //        $("#sidebar").scrollTo("+="+Math.abs(diff),500);
+            //    return;
+            //}
             $rootScope.previousMenu =  $rootScope.currentMenu;
             $rootScope.currentMenu = menu;
             log("AppController","updateMenu: set current menu to " + menu.stateName);
             $state.go(menu.stateName);
-            if(autoHideMenubars)
-            {
-                $scope.showDynamicMenus();
-            }
+            //if(autoHideMenubars)
+            //{
+            //    $scope.showDynamicMenus();
+            //}
         }
 
         $scope.startSSE = function()

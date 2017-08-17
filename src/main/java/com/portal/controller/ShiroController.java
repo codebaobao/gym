@@ -93,7 +93,7 @@ public class ShiroController {
     public void logout(HttpServletResponse response) throws IOException{
         //使用权限管理工具进行用户的退出，跳出登录，给出提示信息
         SecurityUtils.getSubject().logout();
-        response.sendRedirect("/portal/login");
+//        response.sendRedirect("/portal/login");
     } 
 
     @RequestMapping("/403")

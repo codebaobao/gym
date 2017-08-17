@@ -2,7 +2,7 @@
  *  Service js file
  */
 var matrix_url="/portal";
-matrix_url="http://localhost:8080/portal";
+//matrix_url="http://localhost:8080/portal";
 angular.module('matrix.bizModule')
 	.factory('lanSrv', ['httpSrv', function(httpSrv) {
 		log('lanSrv', "to set lan");
