@@ -218,7 +218,6 @@ bizModule.controller('AppController', ['$scope','$rootScope', '$translate', 'res
             $scope.currentLan.value = currentLocale;
 
             $scope.setLanguage = function(){
-                debugger;
                 log("LoginController", "change language to " + $scope.currentLan.value);
                 $translate.use($scope.currentLan.value);
                 currentLocale = $scope.currentLan.value;
@@ -228,6 +227,8 @@ bizModule.controller('AppController', ['$scope','$rootScope', '$translate', 'res
                 var keycode = window.event?$event.keyCode:$event.which;
                 if(keycode==13){
                     $scope.loginPost();
+                }else{
+                    $scope.loginFailed = false;
                 }
             }
 

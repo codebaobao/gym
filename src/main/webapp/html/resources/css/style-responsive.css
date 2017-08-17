@@ -1,0 +1,113 @@
+@media (max-width: 766px) {
+    aside{
+        display: none;
+    }
+    #main-content {
+        min-width: 500px;
+    }
+    .full_width_div{
+        width:100%;
+        padding-left: 0px;
+    }
+    .hide_column{
+        display:none;
+    }
+    .header{
+        position: relative !important;
+    }
+    .wrapper, ul.sidebar-menu{
+        margin-top: 0px !important;
+        background: #ffffff;
+    }
+    ul.sidebar-menu {
+        background: #ffffff;
+        z-index: 9999;
+    }
+    .small_screen_menu{
+        display: block !important;
+    }
+    .large_screen_timeInfo{
+        display: none !important;
+    }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+    aside{
+        display: none;
+    }
+    #sidebar{
+        position: relative;
+        z-index: 999;
+    }
+    #main-content {
+        margin-left: 0px;
+    }
+    .full_width_div{
+        width:100%;
+    }
+    .hide_column{
+        display:none;
+    }
+    .hide_column{
+        display:none;
+    }
+    .header{
+        position: relative !important;
+    }
+    .wrapper, ul.sidebar-menu{
+        margin-top: 0px !important;
+    }
+    ul.sidebar-menu {
+        background: #ffffff;
+        z-index: 9999;
+    }
+    .small_screen_menu{
+        display: block !important;
+    }
+    .large_screen_timeInfo{
+        display: none !important;
+    }
+}
+@media (min-width: 1024px) and (max-width: 1199px) {
+    aside{
+        display: block;
+    }
+    #main-content {
+        margin-left: 180px;
+    }
+    /*.full_width_div{
+        width:100%;
+    }*/
+    .hide_column{
+        display:none;
+    }
+    .hide_column{
+        display:none;
+    }
+    .large_screen_timeInfo{
+        display: inline-block !important;
+    }
+    ul.sidebar-menu {
+        background: #ffffff;
+        z-index: 9999;
+    }
+}
+@media (min-width: 1200px) {
+    aside{
+        display: block;
+    }
+    #main-content {
+        margin-left: 180px;
+    }
+    .hide_column{
+       /* display: ;*/
+    }
+    .large_screen_timeInfo{
+        display: inline-block;
+    }
+    ul.sidebar-menu {
+        background: #ffffff;
+        z-index: 9999;
+    }
+}
+
+

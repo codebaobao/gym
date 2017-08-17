@@ -1,6 +1,6 @@
 <div ng-controller="modalCtrl" id="commonModalDiv">
     <div ng-repeat="modal in modalList">
-        <div id="{{modal.id}}" class="modal" tabindex="-1" role="dialog" aria-labelledby="{{modal.id}}Label" aria-hidden="true" data-backdrop="static">
+        <div id="{{modal.id}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="{{modal.id}}Label" aria-hidden="true" data-backdrop="static">
             <div class="modal-dialog ultra-modal-normal" ng-class="modal.widthClass">
                 <div class="modal-content" ng-include="modal.content">
                 </div>

@@ -13,13 +13,13 @@ dialogModule.factory('dialogSrv', function () {
      *  buttonList format: {"class": className, "text": button text, "callback": callback function}
      */
     var showDialog = function(title, message, buttonList) {
-        var scope = getDialogController();
-        scope.showDialog(title, message, buttonList);
+        var dialogScope = getDialogController();
+        dialogScope.showDialog(title, message, buttonList);
     };
 
     var closeDialog = function(){
-        var scope = getDialogController();
-        scope.closeDialog()
+        var dialogScope = getDialogController();
+        dialogScope.closeDialog()
     }
 
     return {
@@ -91,20 +91,20 @@ dialogModule.factory('dialogSrv', function () {
             });*/
 
             $scope.shownDialogList.push(availDlg);
-
+            return availDlg;
         }
 
         $scope.closeDialog = function(){
-            var availDlg = $scope.shownDialogList.pop();
-            if(availDlg != null)
+            var modal = $scope.shownDialogList.pop();
+            if(modal != null)
             {
-                $('#' + availDlg.id).modal('hide');
-                availDlg.available = true;
-                availDlg.title = "";
-                availDlg.showTitle = false;
-                availDlg.message = "";
-                availDlg.buttonList = [];
-                log("dialogCtrl", "closeDialog: " + angular.toJson(availDlg));
+                $('#' + modal.id).modal('hide');
+                modal.available = true;
+                modal.title = "";
+                modal.showTitle = false;
+                modal.message = "";
+                //modal.buttonList = [];
+                log("dialogCtrl", "closeDialog: " + angular.toJson(modal));
             }else{
                 err("dialogCtrl", "failed to closeDialog: ");
             }
