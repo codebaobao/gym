@@ -40,7 +40,7 @@
       "stateUrl": "/user",
       "viewName": "mainContentView",
       "templateUrl": "/portal/html/partials/user/user.html",
-      "controller": "",
+      "controller": "userController",
       "icon": "icon-home",
       "role": "Administrator"
     }

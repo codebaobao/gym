@@ -1,9 +1,9 @@
 {
     "menu":{
-        "order":"订单管理",
-        "userOrder":"订单管理",
+        "order":"订单",
+        "userOrder":"订单",
         "verify":"审核",
-        "user":"用户管理"
+        "user":"用户"
     },
     "label":{
         "systemName":"管理系统",
@@ -24,6 +24,13 @@
         "closeText": "关闭",
         "changePassword":"修改密码",
         "userPwdUpdated":"密码修改成功。",
+        "userList": "用户列表",
+        "userName": "用户名",
+        "useralias":"昵称",
+        "userRole": "类型",
+        "action": "操作",
+        "addUser": "添加用户",
+
         "systemLoading":"系统加载..."
     },
     "btn":{
@@ -57,7 +64,8 @@
   "dropdown": {
     "english": "英语",
     "chinese": "简体中文",
-    "administrator": "管理员",
-    "operator": "操作员"
+    "Administrator": "管理员",
+    "Personal": "个人",
+     "Organ": "商家"
   }
 }

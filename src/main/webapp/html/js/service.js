@@ -26,8 +26,15 @@ angular.module('matrix.bizModule')
 			var req = {method: "PUT", url: matrix_url + "/users", data:user};
 			httpSrv.exec(req, callback, errorCallback);
 		}
+
+		var getUsers = function ( index, size, role, callback, errorCallback) {
+			var req = {method: "GET", url: matrix_url + "/users/"+role+"?index="+index+"&size="+size};
+			httpSrv.exec(req, callback, errorCallback);
+		}
+
 		return {
-			updateUser: updateUser
+			updateUser: updateUser,
+			getUsers: getUsers
 		}
 	}])
 

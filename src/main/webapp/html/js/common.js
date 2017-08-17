@@ -8,18 +8,27 @@ var currentUserId = "";
 var currentUserRole = "";
 var matrixCommon = angular.module('matrix.common', []);
 
+var roleList = [{"name":"dropdown.Administrator", "value":"Administrator"}, {"name":"dropdown.Organ", "value":"Organ"}, {"name":"dropdown.Personal", "value":"Personal"}];
+
 matrixCommon.factory("constantsSrv", ['$resource','$q', '$timeout','$cookieStore',function($resource, $q, $timeout, $cookieStore) {
+
+    var getRoleList  = function(){
+        return roleList;
+    }
     return {
+        getRoleList: getRoleList
 
     };
 }])
-    .filter('yesNoFilter', function() {
+    .filter('roleFilter', function() {
         return function(value) {
-            if(value)
+            if(value == 'Administrator')
             {
-                return 'dropdown.yes';
-            }else{
-                return 'dropdown.no';
+                return 'dropdown.Administrator';
+            }else if(value == 'Personal'){
+                return 'dropdown.Personal';
+            }else if(value == 'Organ'){
+                return 'dropdown.Organ';
             }
         }
     })
@@ -137,13 +146,13 @@ matrixCommon.factory("constantsSrv", ['$resource','$q', '$timeout','$cookieStore
             }
             log("httpSrv", "" + angular.toJson(config));
             $http({method: config.method, url: config.url, data: config.data, headers: {'Accept-Language': currentLocale, 'Current-User':currentUserId + "|" + currentUserRole},responseType:"application/json;charset=UTF-8"}).
-                then(function(data, status) {
+                success(function(data, status) {
                     $(".loading_icon_div").hide();
                     log("httpSrv", angular.toJson(data) + ",   " + status);
                     if(callback)
                         callback(data, status);
-                },
-                function(data, status) {
+                }).
+                error(function(data, status) {
                     $(".loading_icon_div").hide();
                     log("httpSrv", "error: " + angular.toJson(data) + ",   " + status);
                     if(status == 401 || status == 403)

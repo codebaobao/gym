@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.portal.common.PageReq;
 import com.portal.common.PageResponse;
 import com.portal.common.PageResponseUtil;
+import com.portal.common.Role;
 import com.portal.dao.UserRepository;
 import com.portal.entity.User;
 import com.portal.service.UserService;
@@ -31,9 +32,10 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public PageResponse<User> list(PageReq pageReq, String role) {
+	public PageResponse<User> list(PageReq pageReq, String roleName) {
 		// TODO Auto-generated method stub
 		Pageable pageable = new PageRequest(pageReq.getIndex(), pageReq.getSize(), Sort.Direction.ASC, "id");
+		Role role = Role.getRole(roleName);
 		Page<User> userPage = userRepository.findByRole(pageable, role);
 		return PageResponseUtil.getPageResponse(pageReq.getIndex(), pageReq.getSize(), userPage.getTotalPages(), userPage.getContent(),
 				userPage.getSize());

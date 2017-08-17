@@ -29,7 +29,7 @@
         </form>
     </div>
     <div class="modal-footer clear">
-        <button type="button" class="btn" ng-class="passwordForm.$dirty? 'btn-primary':''"
+        <button type="button" class="btn" ng-class="passwordForm.$dirty? 'btn-info':''"
                 ng-disabled="passwordForm.$invalid|| passwordForm.newPassword.$invalid || passwordForm.confirmPassword.$invalid" ng-click="savePassword(passwordForm)">{{"btn.ok" | translate}}</button>
         <button type="button" class="btn" data-dismiss="modal">{{"btn.cancel" | translate}}</button>
     </div>

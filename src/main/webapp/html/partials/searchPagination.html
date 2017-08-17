@@ -1,0 +1,17 @@
+<nav ng-hide="pageData.hidePageBar">
+    <ul class="pagination pagination-sm">
+        <li>
+            <a ng-click="goPage(pageData.pageIndex - 1)"  style="{{pageData.pageIndex > 0 ? 'visibility:visible':'visibility:hidden'}}" aria-label="Previous">
+                <span aria-hidden="true">< {{"label.previousPage" | translate}}</span>
+            </a>
+        </li>
+        <li ng-repeat="page in pageData.pageBarList" class="{{page == pageData.pageIndex ? 'active' : ''}}" >
+            <a ng-click="goSearchPage(page)" ng-disabled="page == pageData.pageIndex">{{page + 1}}</a>
+        </li>
+        <li>
+            <a ng-click="goPage(pageData.pageIndex + 1)" style="{{pageData.pageIndex < (pageData.pageCount -1) ? 'visibility:visible':'visibility:hidden'}}" aria-label="Next">
+                <span aria-hidden="true">{{"label.nextPage" | translate}} ></span>
+            </a>
+        </li>
+    </ul>
+</nav>

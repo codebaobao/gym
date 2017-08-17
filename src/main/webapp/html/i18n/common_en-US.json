@@ -24,6 +24,13 @@
         "closeText": "Close",
         "changePassword":"Change Password",
         "userPwdUpdated":"Change Password Success.",
+        "userList": "User List",
+        "userName": "User Name",
+        "useralias":"Pet Name",
+        "userRole": "Type",
+        "action": "Action",
+        "addUser": "Add User",
+
         "systemLoading":"System Loading..."
     },
     "btn":{
@@ -57,7 +64,8 @@
     "dropdown": {
         "english": "English",
         "chinese": "Simplified Chinese",
-        "administrator": "Administrator",
-        "operator": "Operator"
+        "Administrator": "Administrator",
+        "Personal": "Personal",
+        "Organ": "Business"
     }
 }

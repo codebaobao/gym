@@ -7,6 +7,10 @@ var autoHideMenubars = false;
 bizModule.controller('AppController', ['$scope','$rootScope', '$translate', 'resSrv', '$timeout','$interval','$filter','$state','modalSrv','constantsSrv','dialogSrv','httpSrv',
     '$location', function($scope, $rootScope, $translate, resSrv, $timeout, $interval, $filter, $state, modalSrv, constantsSrv,dialogSrv,httpSrv ) {
 
+        $scope.pageIndex = 0;
+        $scope.pageSize = 10;
+        $scope.pageBarSize = 10;
+
         var userInfo = getData("userLoginInfo");
         if(userInfo != null){
             $scope.loginUser = angular.fromJson(userInfo);
@@ -236,8 +240,7 @@ bizModule.controller('AppController', ['$scope','$rootScope', '$translate', 'res
             $scope.loginFailedMessage = "";
             $scope.loginPost = function(){
                 var user = {username:$scope.loginInfo.loginId, password:CryptoJS.MD5($scope.loginInfo.password)};
-                $scope.doLogin(user, function(callback){
-                    var data = callback.data;
+                $scope.doLogin(user, function(data){
                     if(data != null){
                         if(data.message == 'success'){
                             saveData("userLoginInfo", angular.toJson(data.user));
