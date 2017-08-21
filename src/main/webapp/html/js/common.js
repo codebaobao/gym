@@ -8,16 +8,28 @@ var currentUserId = "";
 var currentUserRole = "";
 var matrixCommon = angular.module('matrix.common', []);
 
-var roleList = [{"name":"dropdown.Administrator", "value":"Administrator"}, {"name":"dropdown.Organ", "value":"Organ"}, {"name":"dropdown.Personal", "value":"Personal"}];
+var _roleList = [{"name":"dropdown.Administrator", "value":"Administrator"}, {"name":"dropdown.Organ", "value":"Organ"}, {"name":"dropdown.Personal", "value":"Personal"}];
+var _genderList = [{"name":"dropdown.man", "value":"0"}, {"name":"dropdown.woman", "value":"1"}];
+var _tradeList = [{"name":"dropdown.Body", "value":"Body"}, {"name":"dropdown.Yoga", "value":"Yoga"}, {"name":"dropdown.Swim", "value":"Swim"}, {"name":"dropdown.Wushu", "value":"Wushu"}, {"name":"dropdown.Dance", "value":"Dance"}];
 
 matrixCommon.factory("constantsSrv", ['$resource','$q', '$timeout','$cookieStore',function($resource, $q, $timeout, $cookieStore) {
 
     var getRoleList  = function(){
-        return roleList;
+        return _roleList;
     }
-    return {
-        getRoleList: getRoleList
 
+    var getGenderList  = function(){
+        return _genderList;
+    }
+
+    var getTradeList  = function(){
+        return _tradeList;
+    }
+
+    return {
+        getRoleList: getRoleList,
+        getTradeList: getTradeList,
+        getGenderList: getGenderList
     };
 }])
     .filter('roleFilter', function() {
@@ -29,6 +41,19 @@ matrixCommon.factory("constantsSrv", ['$resource','$q', '$timeout','$cookieStore
                 return 'dropdown.Personal';
             }else if(value == 'Organ'){
                 return 'dropdown.Organ';
+            }
+        }
+    })
+
+    .filter('roleStatusFilter', function() {
+        return function(value) {
+            if(value == '0')
+            {
+                return '未审核';
+            }else if(value == '1'){
+                return '正常';
+            }else if(value == '2'){
+                return '冻结';
             }
         }
     })

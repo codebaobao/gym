@@ -26,10 +26,21 @@
         "userPwdUpdated":"密码修改成功。",
         "userList": "用户列表",
         "userName": "用户名",
+        "password":"密码",
         "useralias":"昵称",
         "userRole": "类型",
         "action": "操作",
-        "addUser": "添加用户",
+        "addUser": "新增用户",
+        "status":"状态",
+        "noVerify":"未审核",
+        "normal":"正常",
+        "freeze":"冻结",
+        "gender":"性别",
+        "phoneNumber":"手机号",
+        "email":"邮箱",
+        "idCard":"身份证",
+        "organCode":"组织机构代码",
+        "trade":"商业类型",
 
         "systemLoading":"系统加载..."
     },
@@ -66,6 +77,14 @@
     "chinese": "简体中文",
     "Administrator": "管理员",
     "Personal": "个人",
-     "Organ": "商家"
+     "Organ": "商家",
+      "Body": "健身",
+      "Yoga": "瑜伽",
+      "Swim": "游泳",
+      "Wushu": "武术",
+      "Dance": "舞蹈",
+
+      "man":"男",
+      "woman":"女"
   }
 }

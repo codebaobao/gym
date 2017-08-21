@@ -54,6 +54,14 @@ public class User implements java.io.Serializable{
 	@Temporal(TemporalType.DATE)
 	@Column(name = "dob", length=10)
 	private Date dob;
+	
+	/**
+	 * 0:审核未通过
+	 * 1：正常
+	 * 2：冻结
+	 */
+	@Column(name = "status")
+	private String status;
 
 	public String getId() {
 		return id;
@@ -149,6 +157,14 @@ public class User implements java.io.Serializable{
 
 	public void setDob(Date dob) {
 		this.dob = dob;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 }

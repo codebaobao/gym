@@ -29,12 +29,12 @@ public class UserController {
 	private UserService userService;
 	
 	@GetMapping(value="/{role}")
-	public PageResponse<User> list(@PathVariable String role, @RequestParam String index, @RequestParam String size){
+	public PageResponse<User> list(@PathVariable String role, @RequestParam String status, @RequestParam String index, @RequestParam String size){
 		int pageIndex = Integer.parseInt(index);
 		int pageSize = Integer.parseInt(size);
 		PageReq pageReq = new PageReq(pageIndex, pageSize);
 		
-		return userService.list(pageReq, role);
+		return userService.list(pageReq, role, status);
 	}
 	
 	@PostMapping

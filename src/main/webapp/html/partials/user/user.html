@@ -1,19 +1,28 @@
 <div ng-controller="userController">
-<div class="row">
-    <span class="col-xs-2">
-        {{"label.userList" | translate}}
-    </span>
-    <div class="col-xs-2">
-        <select class="form-control" ng-model="selectedRole" ng-change="roleChange()">
-            <option ng-repeat="role in roleList" ng-selected="role.value == selectedRole" value="{{role.value}}">{{role.name | translate}}</option>
-        </select>
+    <div class="row">
+        <span class="col-xs-2">
+            {{"label.userList" | translate}}
+        </span>
+        <div class="col-xs-3">
+            <label class="control-label">{{"label.userRole" | translate}}：</label>
+            <select class="form-control" style="width:110px;display: inline-block;" ng-model="selectedRole" ng-change="roleChange()">
+                <option ng-repeat="role in roleList" ng-selected="role.value == selectedRole" value="{{role.value}}">{{role.name | translate}}</option>
+            </select>
+        </div>
+        <div class="col-xs-3">
+            <label class="control-label">{{"label.status" | translate}}：</label>
+            <select class="form-control" style="width:110px;display: inline-block;" ng-model="roleStatus" ng-change="roleStatusChange()">
+                <option ng-selected="'0' == roleStatus" value="0">{{"label.noVerify" | translate}}</option>
+                <option ng-selected="'1' == roleStatus" value="1">{{"label.normal" | translate}}</option>
+                <option ng-selected="'2' == roleStatus" value="2">{{"label.freeze" | translate}}</option>
+            </select>
+        </div>
+        <div class="col-xs-2">
+            <a class="btn btn-sm btn-info" ng-click="showAddUser()">
+                {{"label.addUser" | translate}}
+            </a>
+        </div>
     </div>
-    <div class="col-xs-2">
-        <a class="btn btn-sm btn-info" ng-click="showAddUser()">
-            {{"label.addUser" | translate}}
-        </a>
-    </div>
-</div>
 
 <div class="box-content no-padding">
     <table class="table table-striped fixed_table" cellpadding="0" cellspacing="0">
@@ -23,6 +32,7 @@
             <th>{{"label.userName" | translate}}</th>
             <th>{{"label.userRole" | translate}}</th>
             <th>{{"label.useralias" | translate}}</th>
+            <th>{{"label.status" | translate}}</th>
             <th>{{"label.action" | translate}}</th>
         </tr>
         </thead>
@@ -32,6 +42,7 @@
             <td>{{user.name}}</td>
             <td>{{user.role | roleFilter | translate}}</td>
             <td>{{user.alias}}</td>
+            <td>{{user.status | roleStatusFilter | translate}}</td>
             <td>
                 <button type="button" class="btn btn-sm btn-info" ng-click="updatUser(user)">{{"btn.edit" | translate}}</button>
                 <button type="button" class="btn btn-sm btn-danger" ng-click="delUserDialog(user)">{{"btn.delete" | translate}}</button>

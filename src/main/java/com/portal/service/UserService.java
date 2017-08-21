@@ -22,7 +22,7 @@ public interface UserService {
      * 获取Users
      * @return
      */
-    public PageResponse<User> list(PageReq pageReq, String role);
+    public PageResponse<User> list(PageReq pageReq, String role, String status);
 
     /**
      * 按id获取User

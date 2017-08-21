@@ -4,8 +4,9 @@ angular.module('matrix.bizModule')
             $scope.roleList = constantsSrv.getRoleList();
             $scope.pageData = {};
             $scope.selectedRole = "Administrator";
+            $scope.roleStatus = "1";
             $scope.loadUsers = function(){
-                UsersSrv.getUsers($scope.pageIndex, $scope.pageSize, $scope.selectedRole, function(data){
+                UsersSrv.getUsers($scope.pageIndex, $scope.pageSize, $scope.selectedRole, $scope.roleStatus, function(data){
                     if(data && data.details){
                         $scope.pageData = data;
                         $scope.calculatePagination($scope.pageData);
@@ -18,8 +19,13 @@ angular.module('matrix.bizModule')
                 $scope.loadUsers();
             }
 
-            $scope.showAddUser = function(){
+            $scope.roleStatusChange = function(){
+                $scope.loadUsers();
+            }
 
+            $scope.showAddUser = function(){
+                var user = {};
+                modalSrv.showModal("html/partials/user/newUser.html",user,3);
             }
 
             $scope.updatUser = function(){
@@ -32,6 +38,22 @@ angular.module('matrix.bizModule')
 
         }
     ])
+
+    .controller('addUserCtrl', ['$scope', '$rootScope', '$translate', '$filter', '$state', 'dialogSrv', 'modalSrv','constantsSrv', 'UsersSrv',
+        function ($scope, $rootScope, $translate, $filter, $state, dialogSrv, modalSrv, constantsSrv, UsersSrv) {
+            $scope.user = modalSrv.getData();
+            $scope.roleList = constantsSrv.getRoleList();
+            $scope.genderList = constantsSrv.getGenderList();
+            $scope.tradeList = constantsSrv.getTradeList();
+
+            $scope.saveUser = function(){
+                $scope.user.status="1";
+                UsersSrv.addUser($scope.user, function(){
+                    modalSrv.hideModal();
+                })
+            }
+        }
+     ])
     .controller('ChangeUserPasswordCtrl', ['$scope', '$rootScope', '$translate', '$filter', '$state', 'dialogSrv', 'modalSrv','constantsSrv', 'UsersSrv',
         function ($scope, $rootScope, $translate, $filter, $state, dialogSrv, modalSrv, constantsSrv, UsersSrv) {
             $scope.user = modalSrv.getData();

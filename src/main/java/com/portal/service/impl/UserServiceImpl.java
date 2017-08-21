@@ -32,11 +32,11 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public PageResponse<User> list(PageReq pageReq, String roleName) {
+	public PageResponse<User> list(PageReq pageReq, String roleName, String status) {
 		// TODO Auto-generated method stub
 		Pageable pageable = new PageRequest(pageReq.getIndex(), pageReq.getSize(), Sort.Direction.ASC, "id");
 		Role role = Role.getRole(roleName);
-		Page<User> userPage = userRepository.findByRole(pageable, role);
+		Page<User> userPage = userRepository.findByRoleAndStatus(pageable, role, status);
 		return PageResponseUtil.getPageResponse(pageReq.getIndex(), pageReq.getSize(), userPage.getTotalPages(), userPage.getContent(),
 				userPage.getSize());
 	}

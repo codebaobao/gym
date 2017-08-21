@@ -26,10 +26,21 @@
         "userPwdUpdated":"Change Password Success.",
         "userList": "User List",
         "userName": "User Name",
+        "password":"Password",
         "useralias":"Pet Name",
         "userRole": "Type",
         "action": "Action",
         "addUser": "Add User",
+        "status":"Status",
+        "noVerify":"No Verify",
+        "normal":"Normal",
+        "freeze":"Freeze",
+        "gender":"Gender",
+        "phoneNumber":"phoneNumber",
+        "email":"Email",
+        "idCard":"IdCard",
+        "organCode":"OrganCode",
+        "trade":"Trade",
 
         "systemLoading":"System Loading..."
     },
@@ -66,6 +77,14 @@
         "chinese": "Simplified Chinese",
         "Administrator": "Administrator",
         "Personal": "Personal",
-        "Organ": "Business"
+        "Organ": "Business",
+        "Body": "Body",
+        "Yoga": "Yoga",
+        "Swim": "Swim",
+        "Wushu": "Wushu",
+        "Dance": "Dance",
+
+        "man":"Man",
+        "woman":"Woman"
     }
 }
