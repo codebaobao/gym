@@ -1,0 +1,88 @@
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label">{{"label.userName" | translate}}:</label>
+        <div class="col-sm-4">
+            <input type="text" class="form-control" name="username" ng-model="user.name" ng-class="addUserForm.username.$invalid ? 'ng-invalid':''"  required/>
+            <div class="valid_error" ng-show="(addUserForm.username.$invalid)">
+                <span ng-show="addUserForm.username.$error">{{"用户名错误" | translate}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">{{"label.password" | translate}}:</label>
+        <div class="col-sm-4">
+            <input type="password" class="form-control" name="password" ng-model="user.password" ng-class="addUserForm.password.$invalid ? 'ng-invalid':''"  required/>
+            <div class="valid_error" ng-show="(addUserForm.password.$invalid)">
+                <span ng-show="addUserForm.password.$error">{{"密码格式错误" | translate}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">{{"label.useralias" | translate}}:</label>
+        <div class="col-sm-4">
+            <input type="text" class="form-control" name="useralias" ng-model="user.useralias" ng-class="addUserForm.useralias.$invalid ? 'ng-invalid':''"  required/>
+            <div class="valid_error" ng-show="(addUserForm.useralias.$invalid)">
+                <span ng-show="addUserForm.useralias.$error">{{"昵称格式错误" | translate}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">{{"label.gender" | translate}}:</label>
+        <div class="col-sm-4">
+            <select class="form-control" ng-model="user.gender">
+                <option ng-repeat="gender in genderList" ng-selected="gender.value == user.gender" value="{{gender.value}}">{{gender.name | translate}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">{{"label.userRole" | translate}}:</label>
+        <div class="col-sm-4">
+            <select class="form-control" ng-model="user.role">
+                <option ng-repeat="role in roleList" ng-selected="role.value == user.role" value="{{role.value}}">{{role.name | translate}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">{{"label.phoneNumber" | translate}}:</label>
+        <div class="col-sm-4">
+            <input type="text" class="form-control" name="phoneNumber" ng-model="user.phoneNumber" ng-class="addUserForm.phoneNumber.$invalid ? 'ng-invalid':''"  required/>
+            <div class="valid_error" ng-show="(addUserForm.phoneNumber.$invalid)">
+                <span ng-show="addUserForm.phoneNumber.$error">{{"手机号码格式错误" | translate}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">{{"label.email" | translate}}:</label>
+        <div class="col-sm-4">
+            <input type="text" class="form-control" name="email" ng-model="user.email" ng-class="addUserForm.email.$invalid ? 'ng-invalid':''"  required/>
+            <div class="valid_error" ng-show="(addUserForm.email.$invalid)">
+                <span ng-show="addUserForm.email.$error">{{"邮箱格式错误" | translate}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">{{"label.idCard" | translate}}:</label>
+        <div class="col-sm-4">
+            <input type="text" class="form-control" name="idCard" ng-model="user.idCard" ng-class="addUserForm.idCard.$invalid ? 'ng-invalid':''"  required/>
+            <div class="valid_error" ng-show="(addUserForm.idCard.$invalid)">
+                <span ng-show="addUserForm.idCard.$error">{{"身份证格式错误" | translate}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">{{"label.organCode" | translate}}:</label>
+        <div class="col-sm-4">
+            <input type="text" class="form-control" name="organCode" ng-model="user.organCode" ng-class="addUserForm.organCode.$invalid ? 'ng-invalid':''"  required/>
+            <div class="valid_error" ng-show="(addUserForm.organCode.$invalid)">
+                <span ng-show="addUserForm.organCode.$error">{{"组织结构代码格式错误" | translate}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">{{"label.trade" | translate}}:</label>
+        <div class="col-sm-4">
+            <select class="form-control" ng-model="user.trade">
+                <option ng-repeat="trade in tradeList" ng-selected="trade.value == user.trade" value="{{trade.value}}">{{trade.name | translate}}</option>
+            </select>
+        </div>
+    </div>
