@@ -1,5 +1,7 @@
 package com.portal.service.impl;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -23,6 +25,8 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public void add(User user) {
+		Date date = new Date();
+		user.setDob(date);
 		userRepository.save(user);
 	}
 	

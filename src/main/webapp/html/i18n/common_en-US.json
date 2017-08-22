@@ -31,6 +31,7 @@
         "userRole": "Type",
         "action": "Action",
         "addUser": "Add User",
+        "editUser": "Edit User",
         "status":"Status",
         "noVerify":"No Verify",
         "normal":"Normal",
@@ -41,6 +42,7 @@
         "idCard":"IdCard",
         "organCode":"OrganCode",
         "trade":"Trade",
+        "deleteConfirmMsg": "Are you sure to delete this record?",
 
         "systemLoading":"System Loading..."
     },
@@ -58,6 +60,9 @@
         "confirm": "confirm",
         "return": "return",
         "refresh": "refresh",
+        "freeze":"Freeze",
+        "deblock":"Deblock",
+
         "exit":"exit",
         "login":"log in"
     },

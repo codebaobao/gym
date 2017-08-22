@@ -23,17 +23,6 @@
       "role": "Organ"
     },
     {
-      "label": "menu.verify",
-      "title": "menu.verify",
-      "stateName": "verify",
-      "stateUrl": "/verify",
-      "viewName": "mainContentView",
-      "templateUrl": "/portal/html/partials/verify/verify.html",
-      "controller": "",
-      "icon": "icon-home",
-      "role": "Administrator"
-    },
-    {
       "label": "menu.user",
       "title": "menu.user",
       "stateName": "user",

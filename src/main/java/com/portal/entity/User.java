@@ -51,8 +51,7 @@ public class User implements java.io.Serializable{
 	@Enumerated(EnumType.STRING)
 	private Trade trade;
 	
-	@Temporal(TemporalType.DATE)
-	@Column(name = "dob", length=10)
+	@Column(name = "dob")
 	private Date dob;
 	
 	/**

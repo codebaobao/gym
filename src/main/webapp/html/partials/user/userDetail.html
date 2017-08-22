@@ -2,27 +2,36 @@
     <div class="form-group">
         <label class="col-sm-3 control-label">{{"label.userName" | translate}}:</label>
         <div class="col-sm-4">
-            <input type="text" class="form-control" name="username" ng-model="user.name" ng-class="addUserForm.username.$invalid ? 'ng-invalid':''"  required/>
-            <div class="valid_error" ng-show="(addUserForm.username.$invalid)">
-                <span ng-show="addUserForm.username.$error">{{"用户名错误" | translate}}</span>
+            <input type="text" class="form-control" name="username" ng-model="user.name" ng-class="addUserForm.username.$dirty && addUserForm.username.$invalid ? 'ng-invalid':''"  required/>
+            <div class="valid_error" ng-show="addUserForm.username.$dirty && addUserForm.username.$invalid">
+                <span ng-show="addUserForm.username.$error">{{"用户名是必须的。" | translate}}</span>
             </div>
         </div>
     </div>
-    <div class="form-group">
+    <div class="form-group" ng-if="addFlag">
         <label class="col-sm-3 control-label">{{"label.password" | translate}}:</label>
         <div class="col-sm-4">
-            <input type="password" class="form-control" name="password" ng-model="user.password" ng-class="addUserForm.password.$invalid ? 'ng-invalid':''"  required/>
-            <div class="valid_error" ng-show="(addUserForm.password.$invalid)">
-                <span ng-show="addUserForm.password.$error">{{"密码格式错误" | translate}}</span>
+            <input type="password" class="form-control" name="password" ng-model="user.password" ng-class="addUserForm.password.$dirty && addUserForm.password.$invalid ? 'ng-invalid':''"  required/>
+            <div class="valid_error" ng-show="addUserForm.password.$dirty && addUserForm.password.$invalid">
+                <span ng-show="addUserForm.password.$error">{{"密码是必须的。" | translate}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group" ng-if="addFlag">
+        <label class="col-sm-3 control-label">{{"label.confirmPassword" | translate}}:</label>
+        <div class="col-sm-4">
+            <input type="password" class="form-control" name="confirmPassword" ng-model="confirmPassword" ng-class="addUserForm.confirmPassword.$dirty && addUserForm.confirmPassword.$invalid ? 'ng-invalid':''"  required/>
+            <div class="valid_error" ng-show="user.password != confirmPassword && addUserForm.confirmPassword.$dirty">
+                <span>{{"两次输入密码不一致。" | translate}}</span>
             </div>
         </div>
     </div>
     <div class="form-group">
         <label class="col-sm-3 control-label">{{"label.useralias" | translate}}:</label>
         <div class="col-sm-4">
-            <input type="text" class="form-control" name="useralias" ng-model="user.useralias" ng-class="addUserForm.useralias.$invalid ? 'ng-invalid':''"  required/>
-            <div class="valid_error" ng-show="(addUserForm.useralias.$invalid)">
-                <span ng-show="addUserForm.useralias.$error">{{"昵称格式错误" | translate}}</span>
+            <input type="text" class="form-control" name="useralias" ng-model="user.alias" ng-class="addUserForm.useralias.$dirty && addUserForm.useralias.$invalid ? 'ng-invalid':''"  required/>
+            <div class="valid_error" ng-show="addUserForm.useralias.$dirty && addUserForm.useralias.$invalid">
+                <span ng-show="addUserForm.useralias.$error">{{"昵称是必须的。" | translate}}</span>
             </div>
         </div>
     </div>
@@ -45,36 +54,36 @@
     <div class="form-group">
         <label class="col-sm-3 control-label">{{"label.phoneNumber" | translate}}:</label>
         <div class="col-sm-4">
-            <input type="text" class="form-control" name="phoneNumber" ng-model="user.phoneNumber" ng-class="addUserForm.phoneNumber.$invalid ? 'ng-invalid':''"  required/>
-            <div class="valid_error" ng-show="(addUserForm.phoneNumber.$invalid)">
-                <span ng-show="addUserForm.phoneNumber.$error">{{"手机号码格式错误" | translate}}</span>
+            <input type="tel" class="form-control" name="phoneNumber" ng-model="user.phoneNumber" ng-class="addUserForm.phoneNumber.$dirty && addUserForm.phoneNumber.$invalid ? 'ng-invalid':''"  required/>
+            <div class="valid_error" ng-show="addUserForm.phoneNumber.$dirty && addUserForm.phoneNumber.$invalid">
+                <span ng-show="addUserForm.phoneNumber.$error">{{"手机号码是必须的。" | translate}}</span>
             </div>
         </div>
     </div>
     <div class="form-group">
         <label class="col-sm-3 control-label">{{"label.email" | translate}}:</label>
         <div class="col-sm-4">
-            <input type="text" class="form-control" name="email" ng-model="user.email" ng-class="addUserForm.email.$invalid ? 'ng-invalid':''"  required/>
-            <div class="valid_error" ng-show="(addUserForm.email.$invalid)">
-                <span ng-show="addUserForm.email.$error">{{"邮箱格式错误" | translate}}</span>
+            <input type="email" class="form-control" name="email" ng-model="user.email" ng-class="addUserForm.email.$dirty && addUserForm.email.$invalid ? 'ng-invalid':''"  required/>
+            <div class="valid_error" ng-show="addUserForm.email.$dirty && addUserForm.email.$invalid">
+                <span ng-show="addUserForm.email.$error">{{"非法的邮箱。" | translate}}</span>
             </div>
         </div>
     </div>
     <div class="form-group">
         <label class="col-sm-3 control-label">{{"label.idCard" | translate}}:</label>
         <div class="col-sm-4">
-            <input type="text" class="form-control" name="idCard" ng-model="user.idCard" ng-class="addUserForm.idCard.$invalid ? 'ng-invalid':''"  required/>
-            <div class="valid_error" ng-show="(addUserForm.idCard.$invalid)">
-                <span ng-show="addUserForm.idCard.$error">{{"身份证格式错误" | translate}}</span>
+            <input type="text" class="form-control" name="idCard" ng-model="user.idCard" ng-class="addUserForm.idCard.$dirty && addUserForm.idCard.$invalid ? 'ng-invalid':''"  required/>
+            <div class="valid_error" ng-show="addUserForm.idCard.$dirty && addUserForm.idCard.$invalid">
+                <span ng-show="addUserForm.idCard.$error">{{"身份证号码是必须的。" | translate}}</span>
             </div>
         </div>
     </div>
     <div class="form-group">
         <label class="col-sm-3 control-label">{{"label.organCode" | translate}}:</label>
         <div class="col-sm-4">
-            <input type="text" class="form-control" name="organCode" ng-model="user.organCode" ng-class="addUserForm.organCode.$invalid ? 'ng-invalid':''"  required/>
-            <div class="valid_error" ng-show="(addUserForm.organCode.$invalid)">
-                <span ng-show="addUserForm.organCode.$error">{{"组织结构代码格式错误" | translate}}</span>
+            <input type="text" class="form-control" name="organCode" ng-model="user.organCode" ng-class="addUserForm.organCode.$dirty && addUserForm.organCode.$invalid ? 'ng-invalid':''"  required/>
+            <div class="valid_error" ng-show="addUserForm.organCode.$dirty && addUserForm.organCode.$invalid">
+                <span ng-show="addUserForm.organCode.$error">{{"组织结构代码是必须的。" | translate}}</span>
             </div>
         </div>
     </div>

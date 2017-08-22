@@ -1,14 +1,14 @@
 ﻿<div ng-controller="addAndEditUserCtrl">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close" title="{{'label.closeText' | translate}}" ng-click="hideModal()"><span aria-hidden="true">&times;</span></button>
-        {{"label.addUser" | translate}}
+        {{"label.editUser" | translate}}
     </div>
     <div class="modal-body" >
-        <form class="form-horizontal" name="addUserForm">
+        <form class="form-horizontal" name="editUserForm">
             <div ng-include="'html/partials/user/userDetail.html'"></div>
         </form>
         <div class="modal-footer clear">
-            <button type="submit"  ng-disabled="addUserForm.$invalid" class="btn btn-info" ng-click="saveUser()">{{"btn.ok" | translate}}</button>
+            <button type="submit"  ng-disabled="editUserForm.$invalid" class="btn btn-info" ng-click="saveUser()">{{"btn.ok" | translate}}</button>
             <button type="button" class="btn" ng-click="hideModal()">{{"btn.cancel" | translate}}</button>
         </div>
     </div>

@@ -24,33 +24,71 @@ angular.module('matrix.bizModule')
             }
 
             $scope.showAddUser = function(){
-                var user = {};
+                var user = {"id":"", "role":"Administrator","password":"", "gender":"0", "trade":"Body", "dob":null};
                 modalSrv.showModal("html/partials/user/newUser.html",user,3);
             }
 
-            $scope.updatUser = function(){
-
+            $scope.updateUser = function(user){
+                modalSrv.showModal("html/partials/user/newUser.html",user,3);
             }
 
-            $scope.delUserDialog = function(){
+            $scope.blockUser = function(user){
+                user.status="2";
+                UsersSrv.updateUser(user, function(){
 
+                })
+            }
+
+            $scope.deBlockUser = function(user){
+                user.status="1";
+                UsersSrv.updateUser(user, function(){
+
+                })
+            }
+
+            $scope.delUserDialog = function(user){
+                $scope.deleteUser = user;
+                var buttons = [];
+                buttons[0] = {};
+                buttons[0].class = "btn-info";
+                buttons[0].text =  $filter('translate')('btn.confirm');
+                buttons[0].callback = $scope.deleteUserFun;
+                buttons[1] = {};
+                buttons[1].text =  $filter('translate')('btn.cancel');
+                dialogSrv.showDialog($filter('translate')('dialog.confirm'),$filter('translate')('label.deleteConfirmMsg'), buttons);
+            }
+
+            $scope.deleteUserFun = function(){
+                UsersSrv.deleteUser($scope.deleteUser.id, function(){
+
+                })
             }
 
         }
     ])
 
-    .controller('addUserCtrl', ['$scope', '$rootScope', '$translate', '$filter', '$state', 'dialogSrv', 'modalSrv','constantsSrv', 'UsersSrv',
+    .controller('addAndEditUserCtrl', ['$scope', '$rootScope', '$translate', '$filter', '$state', 'dialogSrv', 'modalSrv','constantsSrv', 'UsersSrv',
         function ($scope, $rootScope, $translate, $filter, $state, dialogSrv, modalSrv, constantsSrv, UsersSrv) {
             $scope.user = modalSrv.getData();
             $scope.roleList = constantsSrv.getRoleList();
             $scope.genderList = constantsSrv.getGenderList();
             $scope.tradeList = constantsSrv.getTradeList();
+            $scope.addFlag = $scope.user.id == ''?true:false;
 
             $scope.saveUser = function(){
-                $scope.user.status="1";
-                UsersSrv.addUser($scope.user, function(){
-                    modalSrv.hideModal();
-                })
+                if($scope.addFlag){
+                    var user = angular.copy($scope.user);
+                    user.password = CryptoJS.MD5(user.password)+"";
+                    user.status="1";
+                    UsersSrv.addUser(user, function(){
+                        modalSrv.hideModal();
+                    })
+                }else{
+                    var user = angular.copy($scope.user);
+                    UsersSrv.updateUser(user, function(){
+                        modalSrv.hideModal();
+                    })
+                }
             }
         }
      ])
@@ -64,6 +102,7 @@ angular.module('matrix.bizModule')
                     form.confirmPassword.$invalid = true;
                     return;
                 }
+                debugger;
                 $scope.user.password = CryptoJS.MD5($scope.passwordInfo.newPassword) + "";
                 UsersSrv.updateUser($scope.user, function(){
                     dialogSrv.showDialog($filter('translate')('dialog.info'), $filter('translate')('label.userPwdUpdated'), [{

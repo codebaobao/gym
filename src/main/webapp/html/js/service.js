@@ -32,6 +32,11 @@ angular.module('matrix.bizModule')
 			httpSrv.exec(req, callback, errorCallback);
 		}
 
+		var deleteUser = function ( id, callback, errorCallback) {
+			var req = {method: "DELETE", url: matrix_url + "/users/"+id};
+			httpSrv.exec(req, callback, errorCallback);
+		}
+
 		var getUsers = function ( index, size, role, status, callback, errorCallback) {
 			var req = {method: "GET", url: matrix_url + "/users/"+role+"?status="+status+"&index="+index+"&size="+size};
 			httpSrv.exec(req, callback, errorCallback);
@@ -40,6 +45,7 @@ angular.module('matrix.bizModule')
 		return {
 			addUser : addUser,
 			updateUser: updateUser,
+			deleteUser: deleteUser,
 			getUsers: getUsers
 		}
 	}])

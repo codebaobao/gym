@@ -31,16 +31,18 @@
         "userRole": "类型",
         "action": "操作",
         "addUser": "新增用户",
+        "editUser": "编辑用户",
         "status":"状态",
         "noVerify":"未审核",
         "normal":"正常",
-        "freeze":"冻结",
+        "freeze":"锁定",
         "gender":"性别",
         "phoneNumber":"手机号",
         "email":"邮箱",
         "idCard":"身份证",
         "organCode":"组织机构代码",
         "trade":"商业类型",
+        "deleteConfirmMsg": "确定要删除该记录吗？",
 
         "systemLoading":"系统加载..."
     },
@@ -58,6 +60,9 @@
         "confirm": "确定",
         "return": "返回",
         "refresh": "刷新",
+        "freeze":"锁定",
+        "deblock":"解锁",
+
         "exit":"退出",
         "login":"登录"
     },
