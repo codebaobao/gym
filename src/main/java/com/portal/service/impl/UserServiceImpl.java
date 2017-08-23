@@ -16,6 +16,9 @@ import com.portal.common.Role;
 import com.portal.dao.UserRepository;
 import com.portal.entity.User;
 import com.portal.service.UserService;
+import com.portal.utils.event.EventCallbackManager;
+import com.portal.utils.event.EventSourceType;
+import com.portal.utils.event.EventType;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -28,11 +31,13 @@ public class UserServiceImpl implements UserService {
 		Date date = new Date();
 		user.setDob(date);
 		userRepository.save(user);
+		EventCallbackManager.notifyListeners(EventType.UserChanged, EventSourceType.UserAdd, user);
 	}
 	
 	@Override
 	public void update(User user){
 		userRepository.save(user);
+		EventCallbackManager.notifyListeners(EventType.UserChanged, EventSourceType.UserUpdate, user);
 	}
 
 	@Override
@@ -55,11 +60,13 @@ public class UserServiceImpl implements UserService {
 		User user = userRepository.findById(id);
 		user.setPassword(password);
 		userRepository.save(user);
+		EventCallbackManager.notifyListeners(EventType.UserChanged, EventSourceType.UserUpdate, user);
 	}
 
 	@Override
 	public void delete(String id) {
 		userRepository.deleteById(id);
+		EventCallbackManager.notifyListeners(EventType.UserChanged, EventSourceType.UserDelete, id);
 	}
 
 	@Override

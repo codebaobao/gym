@@ -6,6 +6,9 @@ var eventSource;
 var autoHideMenubars = false;
 bizModule.controller('AppController', ['$scope','$rootScope', '$translate', 'resSrv', '$timeout','$interval','$filter','$state','modalSrv','constantsSrv','dialogSrv','httpSrv',
     '$location', function($scope, $rootScope, $translate, resSrv, $timeout, $interval, $filter, $state, modalSrv, constantsSrv,dialogSrv,httpSrv ) {
+        $scope.serverErrorCount = 0;
+        $scope.maxServerConnRetry = 5;
+        $scope.stopInterval = false;
 
         $scope.pageIndex = 0;
         $scope.pageSize = 10;
@@ -58,7 +61,7 @@ bizModule.controller('AppController', ['$scope','$rootScope', '$translate', 'res
 
         $scope.startSSE = function()
         {
-            eventSource = new EventSource(matrix_url + "/sse/event?uid=" + currentUserId + "|" +currentUserRole);
+            eventSource = new EventSource(matrix_url + "/sse/event");
             eventSource.onmessage = function(event) {
                 log("SSE", "event from server: " + event.data );
                 $scope.serverErrorCount = 0;
@@ -103,13 +106,15 @@ bizModule.controller('AppController', ['$scope','$rootScope', '$translate', 'res
                 eventSource.close();
             eventSource = null;
         }
-        //$scope.startSSE();
+
+        $scope.startSSE();
+
         $interval(function(){
             if($scope.stopInterval)
                 return;
             if(eventSource == null)
             {
-                //$scope.startSSE();
+                $scope.startSSE();
             }
             $scope.$broadcast("interval_event");
         }, 1000);

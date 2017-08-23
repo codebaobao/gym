@@ -3,6 +3,8 @@ package com.portal.utils.log;
 public enum LogModule {
 	Login,
 	User,
+	EventPush,
+	Thread,
     ;
 	
 	public static LogModule getModule(String s){

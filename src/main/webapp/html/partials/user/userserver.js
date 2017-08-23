@@ -64,6 +64,50 @@ angular.module('matrix.bizModule')
                 })
             }
 
+            $scope.goPage = function(pageIndex){
+                if(pageIndex ==  $scope.pageData.pageIndex){
+                    return;
+                }
+                UsersSrv.getUsers(pageIndex, $scope.pageSize, $scope.selectedRole, $scope.roleStatus, function(data){
+                    if(data && data.details){
+                        $scope.pageData = data;
+                        $scope.calculatePagination($scope.pageData);
+                    }
+                })
+            }
+
+            $scope.refreshCurrentPageData = function(){
+                UsersSrv.getUsers($scope.pageData.pageIndex, $scope.pageSize, $scope.selectedRole, $scope.roleStatus, function(data){
+                    if(data && data.details){
+                        $scope.pageData = data;
+                        $scope.calculatePagination($scope.pageData);
+                    }
+                })
+            }
+
+            $scope.$on("UserChanged", function(event, eventData)
+            {
+                log("UserController", "UserChanged:  " + eventData.eventAction + ", detail: " + angular.toJson(eventData.detail));
+                var userData = eventData.detail;
+                switch(eventData.eventAction) {
+                    case "UserAdd":
+                        $scope.refreshCurrentPageData();
+                        break;
+                    case "UserUpdate":
+                        //for(var i= 0,len=$scope.pageData.details.length; i<len; i++){
+                        //    if(userData.id == $scope.pageData.details[i].id){
+                        //        $scope.pageData.details[i] = userData;
+                        //        break;
+                        //    }
+                        //}
+                        $scope.refreshCurrentPageData();
+                        break;
+                    case "UserDelete":
+                        $scope.refreshCurrentPageData();
+                        break;
+                }
+            });
+
         }
     ])
 
