@@ -134,8 +134,103 @@ angular.module('matrix.bizModule')
                     })
                 }
             }
+
+            $scope.showMap = function(){
+                modalSrv.showModal("html/partials/user/useMap.html", $scope.user, 3);
+            }
         }
      ])
+
+    .controller('userMapCtrl', ['$scope', '$rootScope', '$translate', '$filter', '$state', 'dialogSrv', 'modalSrv','constantsSrv', 'UsersSrv',
+        function ($scope, $rootScope, $translate, $filter, $state, dialogSrv, modalSrv, constantsSrv, UsersSrv) {
+            $scope.user = modalSrv.getData();
+            $scope.addressName = $scope.user.addressName?$scope.user.addressName:"";
+            $scope.customAddressName = $scope.user.customAddressName?$scope.user.customAddressName:"";
+            $scope.point = $scope.user.point?$scope.user.point:"";
+            $scope.pointLon = "";
+            $scope.pointLat = "";
+
+            $scope.map;
+            $scope.myGeo;
+            $scope.currentCity = "北京";
+
+            $scope.loadPoints = function(){
+                if($scope.point != '' && $scope.point.index(',')!=-1){
+                    var pointArr = $scope.point.split(",");
+                    $scope.pointLon = pointArr[0];
+                    $scope.pointLat = pointArr[1];
+                }
+            }
+
+            $scope.loadMap = function(){
+                // 百度地图API功能
+                $scope.map = new BMap.Map("allmap");    // 创建Map实例
+                $scope.map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);  // 初始化地图,设置中心点坐标和地图级别
+                $scope.map.addControl(new BMap.MapTypeControl());   //添加地图类型控件
+                $scope.map.setCurrentCity($scope.currentCity);          // 设置地图显示的城市 此项是必须设置的
+                $scope.map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+
+                $scope.myGeo = new BMap.Geocoder();//创建地址解析器实例
+
+                $scope.searchByPoint();
+
+                $scope.map.addEventListener("click", function(e){
+                    var pt = e.point;
+                    $scope.pointLon = pt.lng;
+                    $scope.pointLat = pt.lat;
+                    $scope.myGeo.getLocation(pt, function(rs){
+                        $scope.addressName = rs.address;
+                    });
+                });
+            }
+
+            $scope.refreshLoadMap = function(){
+                $scope.point = $scope.user.point?$scope.user.point:"";
+                $scope.addressName = $scope.user.addressName?$scope.user.addressName:"";
+                $scope.loadPoints();
+                $scope.loadMap();
+            }
+
+            $scope.searchByName = function(){
+                $scope.map.clearOverlays();
+                // 将地址解析结果显示在地图上,并调整地图视野
+                $scope.myGeo.getPoint($scope.addressName, function(point){
+                    if (point) {
+                        $scope.map.centerAndZoom(point, 16);
+                        $scope.map.addOverlay(new BMap.Marker(point));
+                        $scope.pointLon = point.lng;
+                        $scope.pointLat = point.lat;
+                    }else{
+                        var buttons = [];
+                        buttons[0] = {};
+                        buttons[0].class = "btn-info";
+                        buttons[0].text =  $filter('translate')('btn.confirm');
+                        dialogSrv.showDialog($filter('translate')('dialog.confirm'),$filter('translate')('label.addressResolutionMsg'), buttons);
+                    }
+                }, $scope.currentCity);
+            }
+
+            $scope.searchByPoint = function(){
+                if($scope.pointLon != ''&& $scope.pointLat != ''){
+                    $scope.map.clearOverlays();
+                    var new_point = new BMap.Point($scope.pointLon, $scope.pointLat);
+                    var marker = new BMap.Marker(new_point);  // 创建标注
+                    $scope.map.addOverlay(marker);              // 将标注添加到地图中
+                    $scope.map.panTo(new_point);
+                }
+            }
+
+            $scope.refreshLoadMap();
+
+            $scope.savePoint = function(){
+                $scope.user.addressName = $scope.addressName
+                $scope.user.customAddressName = $scope.customAddressName;
+                $scope.user.point = $scope.pointLon+","+$scope.pointLat;
+                modalSrv.hideModal();
+            }
+        }
+    ])
+
     .controller('ChangeUserPasswordCtrl', ['$scope', '$rootScope', '$translate', '$filter', '$state', 'dialogSrv', 'modalSrv','constantsSrv', 'UsersSrv',
         function ($scope, $rootScope, $translate, $filter, $state, dialogSrv, modalSrv, constantsSrv, UsersSrv) {
             $scope.user = modalSrv.getData();
@@ -146,7 +241,6 @@ angular.module('matrix.bizModule')
                     form.confirmPassword.$invalid = true;
                     return;
                 }
-                debugger;
                 $scope.user.password = CryptoJS.MD5($scope.passwordInfo.newPassword) + "";
                 UsersSrv.updateUser($scope.user, function(){
                     dialogSrv.showDialog($filter('translate')('dialog.info'), $filter('translate')('label.userPwdUpdated'), [{

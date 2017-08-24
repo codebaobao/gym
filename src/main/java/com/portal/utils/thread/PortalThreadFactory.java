@@ -3,6 +3,9 @@ package com.portal.utils.thread;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import org.springframework.stereotype.Component;
+
+@Component
 class PortalThreadFactory implements ThreadFactory
 {
 	private final static String PORTAL_THREADS = "portal-thread-group";

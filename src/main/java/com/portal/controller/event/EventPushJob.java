@@ -3,9 +3,7 @@ package com.portal.controller.event;
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
 
-import com.portal.common.Role;
 import com.portal.utils.event.EventInfo;
-import com.portal.utils.event.EventType;
 import com.portal.utils.log.ILogger;
 import com.portal.utils.log.LogModule;
 import com.portal.utils.log.LogUtil;

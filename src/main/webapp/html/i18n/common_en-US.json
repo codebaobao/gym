@@ -43,6 +43,12 @@
         "organCode":"OrganCode",
         "trade":"Trade",
         "deleteConfirmMsg": "Are you sure to delete this record?",
+        "addressResolutionMsg ": "You chose the address without parsing the result!",
+        "addressName": "Address Name",
+        "point": "Point",
+        "map": "Map",
+        "inputAddress":"Please Input Address...",
+        "inputCustomAddress":"Please Input Custom Address...",
 
         "systemLoading":"System Loading..."
     },
@@ -62,6 +68,7 @@
         "refresh": "refresh",
         "freeze":"Freeze",
         "deblock":"Deblock",
+        "selectAddress":"Address",
 
         "exit":"exit",
         "login":"log in"

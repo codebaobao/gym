@@ -43,6 +43,12 @@
         "organCode":"组织机构代码",
         "trade":"商业类型",
         "deleteConfirmMsg": "确定要删除该记录吗？",
+        "addressResolutionMsg ": "您选择地址没有解析到结果！",
+        "addressName": "地址",
+        "point": "坐标",
+        "map": "地图",
+        "inputAddress":"请输入地址...",
+        "inputCustomAddress":"请输入详细地址...",
 
         "systemLoading":"系统加载..."
     },
@@ -62,6 +68,7 @@
         "refresh": "刷新",
         "freeze":"锁定",
         "deblock":"解锁",
+        "selectAddress":"选择地址",
 
         "exit":"退出",
         "login":"登录"

@@ -2,8 +2,8 @@ package com.portal.service;
 
 import org.springframework.stereotype.Service;
 
-import com.portal.common.PageReq;
-import com.portal.common.PageResponse;
+import com.portal.common.page.PageReq;
+import com.portal.common.page.PageResponse;
 import com.portal.entity.User;
 
 @Service

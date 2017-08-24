@@ -5,8 +5,10 @@ import java.util.List;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
+import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.authc.pam.UnsupportedTokenException;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
@@ -41,6 +43,12 @@ public class MyShiroRealm extends AuthorizingRealm{
 			return null;
 		}
 		SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(username, user.getPassword(), getName());
+        String status = user.getStatus();
+        if("0".equals(status)){//未审核
+        	throw new UnsupportedTokenException();
+        }else if("2".equals(status)){//锁定
+        	throw new LockedAccountException();
+        }
 		return authenticationInfo;
     }
 

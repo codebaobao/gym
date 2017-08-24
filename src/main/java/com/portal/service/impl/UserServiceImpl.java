@@ -9,10 +9,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import com.portal.common.PageReq;
-import com.portal.common.PageResponse;
-import com.portal.common.PageResponseUtil;
 import com.portal.common.Role;
+import com.portal.common.page.PageReq;
+import com.portal.common.page.PageResponse;
+import com.portal.common.page.PageResponseUtil;
 import com.portal.dao.UserRepository;
 import com.portal.entity.User;
 import com.portal.service.UserService;

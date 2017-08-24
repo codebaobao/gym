@@ -1,4 +1,4 @@
-package com.portal.common;
+package com.portal.common.page;
 
 import java.util.ArrayList;
 import java.util.List;

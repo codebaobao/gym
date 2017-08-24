@@ -13,6 +13,7 @@ import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.authc.pam.UnsupportedTokenException;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -72,12 +73,15 @@ public class ShiroController {
         }catch(ExcessiveAttemptsException eae){  
             logger.info("对用户[" + username + "]进行登录验证..验证未通过,错误次数过多");  
             message = "用户名或密码错误次数过多";
-        }catch(AuthenticationException ae){  
+        }catch(UnsupportedTokenException ne){  
+            logger.info("对用户[" + username + "]进行登录验证..审核未通过,堆栈轨迹如下");  
+            message = "账户审核中";
+        } catch(AuthenticationException ae){  
             //通过处理Shiro的运行时AuthenticationException就可以控制用户登录失败或密码错误时的情景  
             logger.info("对用户[" + username + "]进行登录验证..验证未通过,堆栈轨迹如下");  
             ae.printStackTrace();
             message = "用户名或密码不正确";
-        } 
+        }
         //验证是否登录成功  
         if(currentUser.isAuthenticated()){
             User user = userService.getUserByName(username);

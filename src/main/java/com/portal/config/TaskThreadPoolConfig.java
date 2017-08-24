@@ -1,8 +1,10 @@
 package com.portal.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
 
 @ConfigurationProperties(prefix="spring.task.pool")
+@Component
 public class TaskThreadPoolConfig {
 	
 	private int corePoolSize;

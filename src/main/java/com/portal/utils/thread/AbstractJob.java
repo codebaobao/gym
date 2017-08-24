@@ -5,6 +5,9 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public abstract class AbstractJob implements Runnable
 {
 	private String jobName;

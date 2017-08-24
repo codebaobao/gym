@@ -95,3 +95,20 @@
             </select>
         </div>
     </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">{{"label.addressName" | translate}}:</label>
+        <div class="col-sm-4">
+            <input type="text" class="form-control" name="addressName" ng-model="user.addressName" ng-class="addUserForm.addressName.$dirty && addUserForm.addressName.$invalid ? 'ng-invalid':''"  required disabled/>
+            <!--<div class="valid_error" ng-show="addUserForm.addressName.$dirty && addUserForm.addressName.$invalid">-->
+                <!--<span ng-show="addUserForm.addressName.$error">{{"地址是必须的。" | translate}}</span>-->
+            <!--</div>-->
+        </div>
+        <div class="col-sm-3">
+            <input type="text" class="form-control" name="customAddressName" ng-model="user.customAddressName" ng-class="addUserForm.customAddressName.$dirty && addUserForm.customAddressName.$invalid ? 'ng-invalid':''"  required disabled/>
+        </div>
+        <div class="col-sm-1">
+            <button class="btn btn-sm btn-info" ng-click="showMap()">
+                {{"btn.selectAddress" | translate}}
+            </button>
+        </div>
+    </div>

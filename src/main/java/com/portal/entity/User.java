@@ -61,6 +61,15 @@ public class User implements java.io.Serializable{
 	 */
 	@Column(name = "status")
 	private String status;
+	
+	@Column(name = "addressName")
+	private String addressName;
+	
+	@Column(name = "customAddressName")
+	private String customAddressName;
+	
+	@Column(name = "point")
+	private String point;
 
 	public String getId() {
 		return id;
@@ -164,6 +173,30 @@ public class User implements java.io.Serializable{
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public String getAddressName() {
+		return addressName;
+	}
+
+	public void setAddressName(String addressName) {
+		this.addressName = addressName;
+	}
+
+	public String getCustomAddressName() {
+		return customAddressName;
+	}
+
+	public void setCustomAddressName(String customAddressName) {
+		this.customAddressName = customAddressName;
+	}
+
+	public String getPoint() {
+		return point;
+	}
+
+	public void setPoint(String point) {
+		this.point = point;
 	}
 
 }

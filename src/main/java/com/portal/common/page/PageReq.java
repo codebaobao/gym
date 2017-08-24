@@ -1,4 +1,4 @@
-package com.portal.common;
+package com.portal.common.page;
 
 /**
  * Created on 2015/8/24.

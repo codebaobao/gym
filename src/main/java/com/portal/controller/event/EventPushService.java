@@ -7,11 +7,14 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 import javax.annotation.PostConstruct;
 
+import org.springframework.stereotype.Component;
+
 import com.portal.utils.event.EventInfo;
 import com.portal.utils.log.ILogger;
 import com.portal.utils.log.LogModule;
 import com.portal.utils.log.LogUtil;
 
+@Component
 public class EventPushService{
 	private static ILogger logger = LogUtil.getLogger(LogModule.EventPush, EventPushService.class);
 
@@ -31,6 +34,7 @@ public class EventPushService{
 
 	@PostConstruct
 	public void init() {
+		_instance = this;
 		eventQueue = new LinkedBlockingQueue<EventInfo>();
 		eventServerQueue = new LinkedBlockingQueue<EventInfo>();
 
@@ -77,9 +81,6 @@ public class EventPushService{
 	}
 
 	public static EventPushService getInstance() {
-		if(_instance == null){
-			_instance = new EventPushService();
-		}
 		return _instance;
 	}
 }

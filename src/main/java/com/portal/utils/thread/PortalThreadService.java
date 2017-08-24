@@ -5,25 +5,32 @@ import java.util.List;
 import java.util.concurrent.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.portal.config.TaskThreadPoolConfig;
 
+@Component
 public class PortalThreadService
 {
 	private static PortalThreadService _instance;
 	
 	@Autowired
-	private TaskThreadPoolConfig config;
+	private TaskThreadPoolConfig taskThreadPoolConfig;
 	
 	private ThreadPoolExecutor corePoolExec;
 	private ScheduledThreadPoolExecutor scheduledPoolExec;
 	
 	private PortalThreadService()
 	{
-		int coreSize = config.getCorePoolSize();
-		int maxSize = config.getCorePoolMaxSize();
-		long keepAliveTime = config.getThreadTimeout();
-		int scheduledPoolSize = config.getScheduledPoolSize();
+//		int coreSize = taskThreadPoolConfig.getCorePoolSize();
+//		int maxSize = taskThreadPoolConfig.getCorePoolMaxSize();
+//		long keepAliveTime = taskThreadPoolConfig.getThreadTimeout();
+//		int scheduledPoolSize = taskThreadPoolConfig.getScheduledPoolSize();
+		
+		int coreSize = 10;
+		int maxSize = 100;
+		long keepAliveTime = 60;
+		int scheduledPoolSize = 60;
 				
 		corePoolExec = new ThreadPoolExecutor(coreSize, maxSize, keepAliveTime, TimeUnit.SECONDS, new SynchronousQueue<Runnable>(), PortalThreadFactory.getInstance(), new ThreadPoolExecutor.CallerRunsPolicy());					
 		scheduledPoolExec = new ScheduledThreadPoolExecutor(scheduledPoolSize, PortalThreadFactory.getInstance(), new ThreadPoolExecutor.CallerRunsPolicy());		

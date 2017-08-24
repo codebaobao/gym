@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.portal.common.PageReq;
-import com.portal.common.PageResponse;
+import com.portal.common.page.PageReq;
+import com.portal.common.page.PageResponse;
 import com.portal.entity.User;
 import com.portal.service.UserService;
 import com.portal.utils.log.ILogger;
