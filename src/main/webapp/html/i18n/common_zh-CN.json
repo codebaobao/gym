@@ -44,6 +44,7 @@
         "trade":"商业类型",
         "deleteConfirmMsg": "确定要删除该记录吗？",
         "addressResolutionMsg ": "您选择地址没有解析到结果！",
+        "selectPoint": "请选择位置！",
         "addressName": "地址",
         "point": "坐标",
         "map": "地图",

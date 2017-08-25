@@ -44,9 +44,9 @@
             <td>{{user.alias}}</td>
             <td>{{user.status | roleStatusFilter | translate}}</td>
             <td>
-                <!--<button type="button" class="btn btn-sm btn-info" ng-click="updateUser(user)">{{"btn.edit" | translate}}</button>-->
-                <button type="button" class="btn btn-sm btn-info" ng-if="roleStatus=='1'" ng-click="blockUser(user)">{{"btn.freeze" | translate}}</button>
-                <button type="button" class="btn btn-sm btn-info" ng-if="roleStatus=='2'" ng-click="deBlockUser(user)">{{"btn.deblock" | translate}}</button>
+                <button type="button" class="btn btn-sm btn-info" ng-if="loginUser.name == user.name" ng-click="updateUser(user)">{{"btn.edit" | translate}}</button>
+                <button type="button" class="btn btn-sm btn-info" ng-if="roleStatus=='1' && loginUser.role == 'Administrator'" ng-click="blockUser(user)">{{"btn.freeze" | translate}}</button>
+                <button type="button" class="btn btn-sm btn-info" ng-if="roleStatus=='2' && loginUser.role == 'Administrator'" ng-click="deBlockUser(user)">{{"btn.deblock" | translate}}</button>
                 <button type="button" class="btn btn-sm btn-danger" ng-click="delUserDialog(user)">{{"btn.delete" | translate}}</button>
             </td>
         </tr>

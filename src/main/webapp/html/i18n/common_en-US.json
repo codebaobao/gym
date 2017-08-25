@@ -44,6 +44,7 @@
         "trade":"Trade",
         "deleteConfirmMsg": "Are you sure to delete this record?",
         "addressResolutionMsg ": "You chose the address without parsing the result!",
+        "selectPoint": "Please select Point!",
         "addressName": "Address Name",
         "point": "Point",
         "map": "Map",

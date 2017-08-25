@@ -141,8 +141,8 @@ angular.module('matrix.bizModule')
         }
      ])
 
-    .controller('userMapCtrl', ['$scope', '$rootScope', '$translate', '$filter', '$state', 'dialogSrv', 'modalSrv','constantsSrv', 'UsersSrv',
-        function ($scope, $rootScope, $translate, $filter, $state, dialogSrv, modalSrv, constantsSrv, UsersSrv) {
+    .controller('userMapCtrl', ['$scope', '$rootScope', '$translate', '$filter', '$state', 'dialogSrv', 'modalSrv','constantsSrv', 'UsersSrv','$timeout',
+        function ($scope, $rootScope, $translate, $filter, $state, dialogSrv, modalSrv, constantsSrv, UsersSrv, $timeout) {
             $scope.user = modalSrv.getData();
             $scope.addressName = $scope.user.addressName?$scope.user.addressName:"";
             $scope.customAddressName = $scope.user.customAddressName?$scope.user.customAddressName:"";
@@ -152,10 +152,10 @@ angular.module('matrix.bizModule')
 
             $scope.map;
             $scope.myGeo;
-            $scope.currentCity = "北京";
+            $scope.currentCity;
 
             $scope.loadPoints = function(){
-                if($scope.point != '' && $scope.point.index(',')!=-1){
+                if($scope.point != '' && $scope.point.indexOf(',')!=-1){
                     var pointArr = $scope.point.split(",");
                     $scope.pointLon = pointArr[0];
                     $scope.pointLat = pointArr[1];
@@ -165,7 +165,7 @@ angular.module('matrix.bizModule')
             $scope.loadMap = function(){
                 // 百度地图API功能
                 $scope.map = new BMap.Map("allmap");    // 创建Map实例
-                $scope.map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);  // 初始化地图,设置中心点坐标和地图级别
+                $scope.map.centerAndZoom(new BMap.Point(116.331398, 39.897445), 11);  // 初始化地图,设置中心点坐标和地图级别
                 $scope.map.addControl(new BMap.MapTypeControl());   //添加地图类型控件
                 $scope.map.setCurrentCity($scope.currentCity);          // 设置地图显示的城市 此项是必须设置的
                 $scope.map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
@@ -188,26 +188,21 @@ angular.module('matrix.bizModule')
                 $scope.point = $scope.user.point?$scope.user.point:"";
                 $scope.addressName = $scope.user.addressName?$scope.user.addressName:"";
                 $scope.loadPoints();
-                $scope.loadMap();
+                var myCity = new BMap.LocalCity();
+                myCity.get(function(result){
+                    $scope.currentCity = result.name;
+                    $scope.loadMap();
+                });
             }
 
             $scope.searchByName = function(){
+                $scope.pointLon = "";
+                $scope.pointLat = "";
                 $scope.map.clearOverlays();
-                // 将地址解析结果显示在地图上,并调整地图视野
-                $scope.myGeo.getPoint($scope.addressName, function(point){
-                    if (point) {
-                        $scope.map.centerAndZoom(point, 16);
-                        $scope.map.addOverlay(new BMap.Marker(point));
-                        $scope.pointLon = point.lng;
-                        $scope.pointLat = point.lat;
-                    }else{
-                        var buttons = [];
-                        buttons[0] = {};
-                        buttons[0].class = "btn-info";
-                        buttons[0].text =  $filter('translate')('btn.confirm');
-                        dialogSrv.showDialog($filter('translate')('dialog.confirm'),$filter('translate')('label.addressResolutionMsg'), buttons);
-                    }
-                }, $scope.currentCity);
+                var local = new BMap.LocalSearch($scope.map, {
+                    renderOptions:{map: $scope.map}
+                });
+                local.search($scope.addressName);
             }
 
             $scope.searchByPoint = function(){
@@ -217,16 +212,34 @@ angular.module('matrix.bizModule')
                     var marker = new BMap.Marker(new_point);  // 创建标注
                     $scope.map.addOverlay(marker);              // 将标注添加到地图中
                     $scope.map.panTo(new_point);
+                    $scope.map.centerAndZoom(new BMap.Point($scope.pointLon,$scope.pointLat),16);
                 }
             }
 
-            $scope.refreshLoadMap();
+            $timeout($scope.refreshLoadMap, 200);
+            //$scope.refreshLoadMap();
 
             $scope.savePoint = function(){
-                $scope.user.addressName = $scope.addressName
-                $scope.user.customAddressName = $scope.customAddressName;
-                $scope.user.point = $scope.pointLon+","+$scope.pointLat;
-                modalSrv.hideModal();
+                if($scope.pointLon != ""&& $scope.pointLat != ""&& $scope.addressName!=''){
+                    if($scope.customAddressName != ''){
+                        $scope.user.addressName = $scope.addressName
+                        $scope.user.customAddressName = $scope.customAddressName;
+                        $scope.user.point = $scope.pointLon+","+$scope.pointLat;
+                        modalSrv.hideModal();
+                    }else{
+                        var buttons = [];
+                        buttons[0] = {};
+                        buttons[0].class = "btn-info";
+                        buttons[0].text =  $filter('translate')('btn.confirm');
+                        dialogSrv.showDialog($filter('translate')('dialog.confirm'),$filter('translate')('label.inputCustomAddress'), buttons);
+                    }
+                }else{
+                    var buttons = [];
+                    buttons[0] = {};
+                    buttons[0].class = "btn-info";
+                    buttons[0].text =  $filter('translate')('btn.confirm');
+                    dialogSrv.showDialog($filter('translate')('dialog.confirm'),$filter('translate')('label.selectPoint'), buttons);
+                }
             }
         }
     ])
